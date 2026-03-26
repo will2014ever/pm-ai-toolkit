@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build Your AI Team - PM AI Toolkit</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--p:#2563eb;--pd:#1d4ed8;--ac:#7c3aed;--bg:#f8fafc;--card:#fff;--t:#1e293b;--tm:#64748b;--b:#e2e8f0;--g:#059669;--w:#d97706;--teal:#0d9488}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--t);font-size:15px;line-height:1.6}
+  nav{background:#fff;border-bottom:1px solid var(--b);padding:12px 24px;position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:16px}
+  nav a{text-decoration:none;color:var(--tm);font-size:14px;font-weight:500}.nav-back{color:var(--p);font-weight:700}
+  .container{max-width:900px;margin:0 auto;padding:0 24px}
+  .hero{padding:48px 0 32px}
+  .hero .badge{display:inline-block;background:#eff6ff;color:var(--p);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:3px 12px;border-radius:20px;margin-bottom:12px}
+  .hero h1{font-size:2rem;font-weight:800;letter-spacing:-0.04em;margin-bottom:10px}
+  .hero p{color:var(--tm);font-size:1rem;max-width:700px}
+  section{padding:36px 0}section h2{font-size:1.3rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:6px}
+  .section-sub{color:var(--tm);margin-bottom:20px;font-size:14px}
+  .callout{background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:14px 18px;font-size:13px;color:var(--pd);font-weight:500;line-height:1.5;margin:16px 0}
+
+  .agent{background:var(--card);border:1px solid var(--b);border-radius:12px;padding:24px;margin-bottom:16px;display:grid;grid-template-columns:80px 1fr;gap:20px}
+  .agent .a-icon{text-align:center}
+  .agent .a-icon .emoji{font-size:36px;display:block;margin-bottom:6px}
+  .agent .a-icon .role{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--p);padding:3px 8px;border-radius:4px;background:#eff6ff;display:inline-block}
+  .agent h3{font-size:1.1rem;font-weight:700;margin-bottom:4px}
+  .agent .tool-name{font-size:14px;font-weight:600;color:var(--p);margin-bottom:8px}
+  .agent p{font-size:13px;color:var(--tm);line-height:1.55;margin-bottom:8px}
+  .agent .tasks{list-style:none;font-size:13px;color:var(--tm)}
+  .agent .tasks li{padding:3px 0 3px 18px;position:relative}
+  .agent .tasks li::before{content:'';position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:50%;border:2px solid var(--p);opacity:0.5}
+  .agent .use-when{margin-top:10px;font-size:12px;background:#f8fafc;border:1px solid var(--b);border-radius:6px;padding:10px 12px}
+  .agent .use-when strong{color:var(--t)}
+
+  .agent.exec{border-left:4px solid var(--p)}.agent.exec .role{color:var(--p);background:#eff6ff}
+  .agent.know{border-left:4px solid var(--g)}.agent.know .role{color:var(--g);background:#f0fdf4}
+  .agent.res{border-left:4px solid var(--ac)}.agent.res .role{color:var(--ac);background:#f5f3ff}
+  .agent.auto{border-left:4px solid var(--w)}.agent.auto .role{color:var(--w);background:#fefce8}
+  .agent.build{border-left:4px solid var(--teal)}.agent.build .role{color:var(--teal);background:#f0fdfa}
+
+  .matrix{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--b);border-radius:10px;overflow:hidden;font-size:12px;margin-top:16px}
+  .matrix th{background:#f1f5f9;text-align:left;padding:10px 12px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--tm);border-bottom:1px solid var(--b)}
+  .matrix td{padding:8px 12px;border-bottom:1px solid var(--b);vertical-align:top}
+  .matrix tr:last-child td{border-bottom:none}
+  .check{color:var(--g);font-weight:700}.dash{color:#cbd5e1}
+
+  footer{text-align:center;padding:32px 24px;color:var(--tm);font-size:13px;border-top:1px solid var(--b);margin-top:32px}
+</style>
+</head>
+<body>
+
+<nav><a class="nav-back" href="index.html">&larr; Back</a><a href="index.html">PM AI Toolkit</a></nav>
+
+<div class="container">
+
+<div class="hero">
+  <span class="badge">AI Team Architecture</span>
+  <h1>Build Your AI-Powered Virtual Team</h1>
+  <p>Reframed from a tool list into a capability architecture that a PM can actually operate. The strongest PMs in the AI era will be the ones who design the best working system around them.</p>
+</div>
+
+<section>
+  <h2>The 5-Agent Model</h2>
+  <p class="section-sub">Each agent covers a distinct PM capability. Together they form a "one-person company" where the PM orchestrates rather than executes every task.</p>
+
+  <div class="agent exec">
+    <div class="a-icon"><span class="emoji">&#9889;</span><span class="role">Execution</span></div>
+    <div>
+      <h3>Execution Agent</h3>
+      <div class="tool-name">LogiQ (Primary)</div>
+      <p>Your daily workhorse for drafting, analysis, and coding support. This is the tool you open first every morning and keep running all day.</p>
+      <ul class="tasks">
+        <li>Draft emails, Slack messages, and status updates</li>
+        <li>Analyze data exports from Jira, budget sheets, or timelines</li>
+        <li>Summarize long documents or meeting transcripts</li>
+        <li>Quick calculations, formatting, and data transformation</li>
+        <li>Code snippets for automation scripts or data parsing</li>
+      </ul>
+      <div class="use-when"><strong>Use when:</strong> You need fast, general-purpose AI assistance for any task in your daily workflow. First tool to reach for.</div>
+    </div>
+  </div>
+
+  <div class="agent know">
+    <div class="a-icon"><span class="emoji">&#128218;</span><span class="role">Knowledge</span></div>
+    <div>
+      <h3>Knowledge Agent</h3>
+      <div class="tool-name">NotebookLM</div>
+      <p>Enterprise search and source-grounded synthesis. Unlike general AI, NotebookLM only answers from documents you provide &mdash; reducing hallucination and keeping outputs traceable.</p>
+      <ul class="tasks">
+        <li>PCR and lessons-learned synthesis from project docs</li>
+        <li>Search across PRDs, specs, and meeting minutes</li>
+        <li>Generate grounded summaries with source citations</li>
+        <li>Build draft decks from curated document sets</li>
+        <li>Cross-reference information across multiple project artifacts</li>
+      </ul>
+      <div class="use-when"><strong>Use when:</strong> You need answers grounded in specific project documents, not general knowledge. Critical for PCR, audits, and traceable outputs.</div>
+    </div>
+  </div>
+
+  <div class="agent res">
+    <div class="a-icon"><span class="emoji">&#128270;</span><span class="role">Research</span></div>
+    <div>
+      <h3>Research Agent</h3>
+      <div class="tool-name">Gemini Deep Research / Nano Banana</div>
+      <p>Deep research, ideation, and visual exploration. Use for open-ended discovery where you need the AI to go broad before you go narrow.</p>
+      <ul class="tasks">
+        <li>Voice-of-customer deep search (reviews, forums, social media)</li>
+        <li>Competitive analysis and market landscape mapping</li>
+        <li>Technology trend research for feasibility assessment</li>
+        <li>Generate comparison visuals for milestone decks (Nano Banana)</li>
+        <li>Brainstorming and ideation for concept definition</li>
+      </ul>
+      <div class="use-when"><strong>Use when:</strong> You need to explore a broad question, discover patterns in public data, or generate visual assets for presentation.</div>
+    </div>
+  </div>
+
+  <div class="agent auto">
+    <div class="a-icon"><span class="emoji">&#128296;</span><span class="role">Automation</span></div>
+    <div>
+      <h3>Automation Agent</h3>
+      <div class="tool-name">Google Workspace Studio</div>
+      <p>Workflow orchestration and daily status flows. Replaces manual data gathering and distribution with scheduled, repeatable flows.</p>
+      <ul class="tasks">
+        <li>Daily AI news digest to project team</li>
+        <li>Automated morning project status summary</li>
+        <li>Scheduled data pulls from PM tools and dashboards</li>
+        <li>Route summaries to email, Slack, or shared workspace</li>
+        <li>Trigger-based alerts for milestone deadlines or risk changes</li>
+      </ul>
+      <div class="use-when"><strong>Use when:</strong> You have a recurring workflow that runs on a schedule or trigger. Set it up once, let it run daily.</div>
+    </div>
+  </div>
+
+  <div class="agent build">
+    <div class="a-icon"><span class="emoji">&#128187;</span><span class="role">Build</span></div>
+    <div>
+      <h3>Build Agent</h3>
+      <div class="tool-name">Claude Code</div>
+      <p>Rapid prototyping, landing pages, utilities, and MVPs. Enables PMs to build functional tools without engineering support.</p>
+      <ul class="tasks">
+        <li>Product cost calculators and estimation tools</li>
+        <li>Project dashboards and data visualizations</li>
+        <li>Internal landing pages for team resources</li>
+        <li>Data processing scripts and format converters</li>
+        <li>Prototype new workflows before requesting dev resources</li>
+      </ul>
+      <div class="use-when"><strong>Use when:</strong> You need a working tool or prototype and don't want to wait for engineering. Vibe coding &mdash; describe what you want, AI builds it.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Agent Selection Matrix</h2>
+  <p class="section-sub">When to use which agent by PM task type.</p>
+
+  <table class="matrix">
+    <thead>
+      <tr><th>PM Task</th><th>Execution<br>(LogiQ)</th><th>Knowledge<br>(NotebookLM)</th><th>Research<br>(Gemini)</th><th>Automation<br>(Studio)</th><th>Build<br>(Claude Code)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Draft status update</td><td class="check">&#10003;</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td><td class="check">&#10003;</td><td class="dash">&mdash;</td></tr>
+      <tr><td>PCR / lessons learned</td><td class="dash">&mdash;</td><td class="check">&#10003;</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td></tr>
+      <tr><td>VOC / market research</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td><td class="check">&#10003;</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td></tr>
+      <tr><td>Meeting summary</td><td class="check">&#10003;</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td><td class="check">&#10003;</td><td class="dash">&mdash;</td></tr>
+      <tr><td>Risk register draft</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td></tr>
+      <tr><td>Cost estimation tool</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td><td class="check">&#10003;</td></tr>
+      <tr><td>Milestone deck visuals</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td><td class="check">&#10003;</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td></tr>
+      <tr><td>Daily news digest</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td><td class="check">&#10003;</td><td class="dash">&mdash;</td></tr>
+      <tr><td>Dashboard / landing page</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td><td class="check">&#10003;</td></tr>
+      <tr><td>SW/FW architecture review</td><td class="check">&#10003;</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td><td class="check">&#10003;</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="callout">
+    <strong>Key mindset shift:</strong> Stop thinking "which AI tool should I use?" and start thinking "which agent on my team handles this?" The PM becomes the orchestrator &mdash; briefing agents, reviewing output, and making the final call.
+  </div>
+</section>
+
+</div>
+<footer><a href="index.html" style="color:var(--p);text-decoration:none;font-weight:600">&larr; Back to Home</a> &middot; PM AI Toolkit</footer>
+</body>
+</html>

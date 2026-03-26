@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep Dive 6: Vibe Coding &amp; Rapid MVP - PM AI Toolkit</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--p:#2563eb;--pd:#1d4ed8;--bg:#f8fafc;--card:#fff;--t:#1e293b;--tm:#64748b;--b:#e2e8f0;--g:#059669;--w:#d97706;--ac:#7c3aed;--teal:#0d9488}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--t);font-size:15px;line-height:1.6}
+  nav{background:#fff;border-bottom:1px solid var(--b);padding:12px 24px;position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:16px}
+  nav a{text-decoration:none;color:var(--tm);font-size:14px;font-weight:500}.nav-back{color:var(--p);font-weight:700}
+  .container{max-width:900px;margin:0 auto;padding:0 24px}
+  .hero{padding:48px 0 28px}
+  .hero .badge{display:inline-block;background:#f0fdfa;color:var(--teal);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:3px 12px;border-radius:20px;margin-bottom:12px}
+  .hero h1{font-size:1.8rem;font-weight:800;letter-spacing:-0.04em;margin-bottom:10px}
+  .hero p{color:var(--tm);font-size:1rem;max-width:700px}
+  section{padding:32px 0}section h2{font-size:1.2rem;font-weight:700;margin-bottom:6px}
+  .section-sub{color:var(--tm);margin-bottom:18px;font-size:14px}
+  .callout{background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:14px 18px;font-size:13px;color:var(--pd);font-weight:500;line-height:1.5;margin:16px 0}
+  .steps{counter-reset:step}
+  .step{background:var(--card);border:1px solid var(--b);border-radius:10px;padding:20px 20px 20px 64px;margin-bottom:12px;position:relative;counter-increment:step}
+  .step::before{content:counter(step);position:absolute;left:20px;top:20px;width:32px;height:32px;background:var(--teal);color:#fff;border-radius:50%;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:0.95rem;font-weight:700;margin-bottom:4px}
+  .step p{font-size:13px;color:var(--tm);line-height:1.55}
+  .step .tools{margin-top:8px;font-size:12px;color:var(--teal);font-weight:600}
+  .pmi-tags{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+  .pmi-tag{font-size:11px;font-weight:700;padding:4px 12px;border-radius:6px;border:1px solid var(--b);background:var(--card)}.pmi-tag strong{color:var(--p)}
+  .idea-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+  .idea{background:var(--card);border:1px solid var(--b);border-radius:8px;padding:14px}
+  .idea h4{font-size:0.85rem;font-weight:700;margin-bottom:4px;color:var(--teal)}
+  .idea p{font-size:12px;color:var(--tm);line-height:1.45}
+  .prompt-box{background:#f8fafc;border:1px solid var(--b);border-radius:8px;padding:14px;font-size:12px;font-family:'SF Mono','Consolas',monospace;color:var(--t);white-space:pre-wrap;line-height:1.5;margin:12px 0}
+  .prompt-box::before{content:attr(data-label);display:block;font-family:-apple-system,sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--tm);margin-bottom:6px}
+  .tip{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:12px 16px;font-size:13px;color:#065f46;margin:12px 0}.tip strong{color:#047857}
+  footer{text-align:center;padding:32px 24px;color:var(--tm);font-size:13px;border-top:1px solid var(--b);margin-top:32px}
+  @media(max-width:600px){.idea-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav><a class="nav-back" href="index.html">&larr; Back</a><a href="index.html">PM AI Toolkit</a></nav>
+<div class="container">
+
+<div class="hero">
+  <span class="badge">Deep Dive 6</span>
+  <h1>Vibe Coding &amp; Rapid MVP</h1>
+  <p>PMs build tools, dashboards, and landing pages directly with AI coding assistants. From idea to working prototype in hours, not weeks. No engineering ticket needed.</p>
+</div>
+
+<div class="pmi-tags">
+  <span class="pmi-tag"><strong>Lifecycle:</strong> All stages</span>
+  <span class="pmi-tag"><strong>PMI:</strong> Integration, Quality, Communications</span>
+  <span class="pmi-tag"><strong>AI Agent:</strong> Claude Code (Build agent)</span>
+</div>
+
+<section>
+  <h2>What is Vibe Coding?</h2>
+  <p class="section-sub">Vibe coding means describing what you want in natural language and letting AI write the code. The PM focuses on <strong>what</strong> the tool should do, not <strong>how</strong> to code it. Claude Code handles HTML, CSS, JavaScript, data processing, and logic.</p>
+</section>
+
+<section>
+  <h2>Recommended Workflow</h2>
+  <div class="steps">
+    <div class="step">
+      <h3>Define the Problem</h3>
+      <p>What PM task is painful or slow? What tool would make it better? Write a clear 2-3 sentence description of what the tool should do, who uses it, and what the output looks like.</p>
+      <div class="tools">Input: Problem statement in natural language</div>
+    </div>
+    <div class="step">
+      <h3>Open Claude Code and Describe</h3>
+      <p>Start a Claude Code session. Describe the tool you want: layout, inputs, calculations, and desired output. Be specific about data fields, formulas, and visual structure. AI generates the first working version.</p>
+      <div class="tools">Tool: Claude Code with Claude Opus</div>
+    </div>
+    <div class="step">
+      <h3>Review the First Output</h3>
+      <p>Open the generated file in a browser. Check: Does it look right? Do the calculations match? Is the layout intuitive? Note what needs changing &mdash; field names, layout, missing features, calculation errors.</p>
+      <div class="tools">Review: Open in browser, test with real data</div>
+    </div>
+    <div class="step">
+      <h3>Iterate with Natural Language</h3>
+      <p>Tell Claude Code what to change: "add a Packaging section", "make the total row blue and bold", "add a print button that hides the form". Each iteration refines the tool. Typically 3-5 rounds to reach a usable MVP.</p>
+      <div class="tools">Iteration: Conversational refinement</div>
+    </div>
+    <div class="step">
+      <h3>Deploy and Share</h3>
+      <p>The output is a self-contained HTML file. Share via email, Slack, or Drive. No server needed. Colleagues open it in any browser. For more complex tools, deploy on an internal site.</p>
+      <div class="tools">Output: Single HTML file, shareable instantly</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>What PMs Can Build</h2>
+  <div class="idea-grid">
+    <div class="idea"><h4>Product Cost Calculator</h4><p>Convert Excel cost models into web interfaces. Live calculations, printable summaries, scenario comparison.</p></div>
+    <div class="idea"><h4>Risk Mitigation Tracker</h4><p>Visual risk register with heat maps, status tracking, and exportable reports.</p></div>
+    <div class="idea"><h4>Project Dashboard</h4><p>Single-page status view with RAG indicators, timeline visualization, and key metrics.</p></div>
+    <div class="idea"><h4>Issue Resolution Log</h4><p>Structured issue capture with root-cause fields, owner assignment, and status flow.</p></div>
+    <div class="idea"><h4>Teardown Checklist</h4><p>Step-by-step teardown workflow with photo capture fields and structured observations.</p></div>
+    <div class="idea"><h4>SW/FW Architecture Viewer</h4><p>Upload source code and get an AI-generated architecture overview. Helps PMs understand technical design faster.</p></div>
+    <div class="idea"><h4>Meeting Action Tracker</h4><p>Post-meeting tool: paste transcript, AI extracts actions, owners, and deadlines into a trackable list.</p></div>
+    <div class="idea"><h4>Team Resource Planner</h4><p>Visual capacity planner showing team allocation across projects with over-allocation warnings.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Example Prompts</h2>
+
+  <div class="prompt-box" data-label="Claude Code: Cost Calculator MVP">Create a single-page HTML cost calculator.
+Layout: 3-column card grid.
+Column 1: EE Components (17 line items)
+Column 2: ME Components (8 line items)
+Column 3: MFG Parameters + Additional Costs
+
+Bottom: Live cost summary showing subtotals,
+material total, conversion total, and grand total.
+All calculations happen on every keystroke.
+Add a Print button that shows only the summary.</div>
+
+  <div class="prompt-box" data-label="Claude Code: Risk Register Dashboard">Build an interactive risk register as a single HTML page.
+
+Features:
+- Table with: Risk ID, Description, Category,
+  Probability (1-5), Impact (1-5), Score (auto-calc),
+  Owner, Mitigation, Status
+- Color-code rows by risk score (red/amber/green)
+- Add/edit/delete rows
+- Sort by any column
+- Heat map visualization (probability vs impact grid)
+- Export to CSV button</div>
+
+  <div class="prompt-box" data-label="Claude Code: Project Status Page">Create a project status landing page.
+
+Sections:
+1. Project header (name, PM, dates, phase)
+2. RAG status indicators (Overall, Schedule, Budget,
+   Quality, Risk) - clickable to change
+3. Key metrics: % complete, budget burn, open issues
+4. Milestone timeline (horizontal bar)
+5. Top 5 risks with mitigation status
+6. This week / next week highlights
+
+Make it printable. Use blue accent color.
+Single self-contained HTML file.</div>
+</section>
+
+<div class="callout">
+  <strong>PM value:</strong> Faster discovery, better design framing, and stronger early stakeholder alignment. PMs who vibe-code become 10x more self-sufficient &mdash; prototyping ideas instead of writing requirements documents and waiting for dev capacity.
+</div>
+
+<div class="tip">
+  <strong>Tip:</strong> Start with something you personally find tedious (cost tracking, status formatting, data consolidation). The best PM tools are the ones that eliminate your own pain points first.
+</div>
+
+</div>
+<footer><a href="index.html" style="color:var(--p);text-decoration:none;font-weight:600">&larr; Back to Home</a> &middot; PM AI Toolkit</footer>
+</body>
+</html>

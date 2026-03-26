@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep Dive 4: Milestone Visuals with AI - PM AI Toolkit</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--p:#2563eb;--pd:#1d4ed8;--bg:#f8fafc;--card:#fff;--t:#1e293b;--tm:#64748b;--b:#e2e8f0;--g:#059669;--w:#d97706;--ac:#7c3aed;--pink:#db2777}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--t);font-size:15px;line-height:1.6}
+  nav{background:#fff;border-bottom:1px solid var(--b);padding:12px 24px;position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:16px}
+  nav a{text-decoration:none;color:var(--tm);font-size:14px;font-weight:500}.nav-back{color:var(--p);font-weight:700}
+  .container{max-width:900px;margin:0 auto;padding:0 24px}
+  .hero{padding:48px 0 28px}
+  .hero .badge{display:inline-block;background:#fce7f3;color:var(--pink);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:3px 12px;border-radius:20px;margin-bottom:12px}
+  .hero h1{font-size:1.8rem;font-weight:800;letter-spacing:-0.04em;margin-bottom:10px}
+  .hero p{color:var(--tm);font-size:1rem;max-width:700px}
+  section{padding:32px 0}section h2{font-size:1.2rem;font-weight:700;margin-bottom:6px}
+  .section-sub{color:var(--tm);margin-bottom:18px;font-size:14px}
+  .callout{background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:14px 18px;font-size:13px;color:var(--pd);font-weight:500;line-height:1.5;margin:16px 0}
+  .steps{counter-reset:step}
+  .step{background:var(--card);border:1px solid var(--b);border-radius:10px;padding:20px 20px 20px 64px;margin-bottom:12px;position:relative;counter-increment:step}
+  .step::before{content:counter(step);position:absolute;left:20px;top:20px;width:32px;height:32px;background:var(--pink);color:#fff;border-radius:50%;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:0.95rem;font-weight:700;margin-bottom:4px}
+  .step p{font-size:13px;color:var(--tm);line-height:1.55}
+  .step .tools{margin-top:8px;font-size:12px;color:var(--pink);font-weight:600}
+  .prompt-box{background:#f8fafc;border:1px solid var(--b);border-radius:8px;padding:14px;font-size:12px;font-family:'SF Mono','Consolas',monospace;color:var(--t);white-space:pre-wrap;line-height:1.5;margin:12px 0}
+  .prompt-box::before{content:attr(data-label);display:block;font-family:-apple-system,sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--tm);margin-bottom:6px}
+  .pmi-tags{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+  .pmi-tag{font-size:11px;font-weight:700;padding:4px 12px;border-radius:6px;border:1px solid var(--b);background:var(--card)}.pmi-tag strong{color:var(--p)}
+  .example{background:var(--card);border:1px solid var(--b);border-radius:10px;padding:20px;margin:16px 0}
+  .example h3{font-size:0.9rem;font-weight:700;color:var(--p);margin-bottom:8px}
+  .example p{font-size:13px;color:var(--tm);line-height:1.5}
+  .tip{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:12px 16px;font-size:13px;color:#065f46;margin:12px 0}.tip strong{color:#047857}
+  footer{text-align:center;padding:32px 24px;color:var(--tm);font-size:13px;border-top:1px solid var(--b);margin-top:32px}
+</style>
+</head>
+<body>
+<nav><a class="nav-back" href="index.html">&larr; Back</a><a href="index.html">PM AI Toolkit</a></nav>
+<div class="container">
+
+<div class="hero">
+  <span class="badge">Deep Dive 4</span>
+  <h1>Fine-Tune Milestone Visuals with AI</h1>
+  <p>AI-generated visuals help PMs explain product issues more clearly in milestone decks, especially when the root cause is physical and difficult to describe with words alone.</p>
+</div>
+
+<div class="pmi-tags">
+  <span class="pmi-tag"><strong>Lifecycle:</strong> Gate 1 &ndash; Gate X (Refine &rarr; Launch)</span>
+  <span class="pmi-tag"><strong>PMI:</strong> Communications, Quality, Stakeholder</span>
+  <span class="pmi-tag"><strong>AI Agent:</strong> Nano Banana (Research agent)</span>
+</div>
+
+<div class="example">
+  <h3>Real Example: Switch Flash Issue</h3>
+  <p>A product (Kodiak) showed a main-click concern. The root cause pointed to flash on the switch. Reference photos and engineering notes defined what the switch should look like in qualified vs. failed conditions. AI generated side-by-side comparison visuals that made the subtle physical differences easy to see and explain in the milestone deck.</p>
+</div>
+
+<section>
+  <h2>Recommended Workflow</h2>
+  <div class="steps">
+    <div class="step">
+      <h3>Frame the Issue Clearly</h3>
+      <p>Start by writing a clear problem statement: What is the issue? What is the root cause? What physical or technical difference needs to be shown? The clearer your brief, the better the AI output.</p>
+      <div class="tools">Input: Problem statement + root cause description</div>
+    </div>
+    <div class="step">
+      <h3>Provide Reference Material</h3>
+      <p>Use reference photos, engineering notes, sketches, or diagrams to define the "good" vs. "bad" conditions. AI needs visual references to generate accurate comparisons.</p>
+      <div class="tools">Input: Photos, sketches, CAD screenshots, engineering notes</div>
+    </div>
+    <div class="step">
+      <h3>Generate Comparison Visuals</h3>
+      <p>Ask Nano Banana to generate side-by-side visuals showing the qualified vs. failed conditions. Request clear labels, annotations, and highlighted difference areas.</p>
+      <div class="tools">Tool: Nano Banana (AI image generation)</div>
+    </div>
+    <div class="step">
+      <h3>Integrate into Milestone Deck</h3>
+      <p>Use the generated visuals to build the root-cause story in the deck. Side-by-side comparisons help non-technical stakeholders understand the defect mechanism quickly.</p>
+      <div class="tools">Output: Visual slides for milestone/gate review</div>
+    </div>
+    <div class="step">
+      <h3>Review with Engineering Team</h3>
+      <p>PM and engineering review generated visuals. Correct any inaccuracies, keep only the versions that improve understanding. AI visuals supplement &mdash; not replace &mdash; actual engineering data.</p>
+      <div class="tools">Review: Accuracy check with domain experts</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Prompt Templates</h2>
+
+  <div class="prompt-box" data-label="Nano Banana: Side-by-Side Comparison">Generate a side-by-side comparison image showing:
+
+LEFT: Qualified switch condition
+- Clean contact surface, no flash visible
+- Proper actuation height
+
+RIGHT: Failed switch condition
+- Visible flash/burr on contact area
+- Flash interfering with actuation mechanism
+
+Label both sides clearly. Use arrows to highlight
+the key difference. Technical illustration style,
+clean and professional for a milestone deck.</div>
+
+  <div class="prompt-box" data-label="Nano Banana: Annotated Defect Visual">Create an annotated technical illustration of [component]:
+
+1. Show the component in assembled context
+2. Highlight the defect area with a red circle/arrow
+3. Add a zoomed inset showing the defect detail
+4. Include text labels for key dimensions/features
+5. Use clean engineering-drawing style
+
+Purpose: Explain root cause to non-technical stakeholders
+in a gate review presentation.</div>
+</section>
+
+<div class="callout">
+  <strong>PM value:</strong> Clearer storytelling, faster stakeholder understanding, and stronger visual support for engineering decisions. Reduces the "I don't understand the issue" friction in gate reviews.
+</div>
+
+<div class="tip">
+  <strong>Tip:</strong> Always show AI-generated visuals to the engineering team before presenting. Accuracy matters more than aesthetics. Use AI visuals as communication aids, not as engineering evidence.
+</div>
+
+</div>
+<footer><a href="index.html" style="color:var(--p);text-decoration:none;font-weight:600">&larr; Back to Home</a> &middot; PM AI Toolkit</footer>
+</body>
+</html>

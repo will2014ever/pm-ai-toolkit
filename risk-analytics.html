@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Risk &amp; Analytics - AI+PM</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--p:#2563eb;--bg:#f8fafc;--card:#fff;--t:#1e293b;--tm:#64748b;--b:#e2e8f0;--g:#059669;--w:#d97706;--ac:#7c3aed}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--t);font-size:15px;line-height:1.6}
+  nav{background:#fff;border-bottom:1px solid var(--b);padding:12px 24px;position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:16px}
+  nav a{text-decoration:none;color:var(--tm);font-size:14px;font-weight:500}.nav-back{color:var(--p);font-weight:700}
+  .container{max-width:900px;margin:0 auto;padding:0 24px}
+  .hero{padding:48px 0 32px}
+  .hero .badge{display:inline-block;background:#f5f3ff;color:var(--ac);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:3px 12px;border-radius:20px;margin-bottom:12px}
+  .hero h1{font-size:2rem;font-weight:800;letter-spacing:-0.04em;margin-bottom:10px}
+  .hero p{color:var(--tm);font-size:1rem;max-width:700px}
+  section{padding:36px 0}section h2{font-size:1.3rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:6px}
+  .section-sub{color:var(--tm);margin-bottom:20px;font-size:14px}
+  .pmi-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+  .pmi-tag{font-size:11px;font-weight:700;padding:4px 12px;border-radius:6px;border:1px solid var(--b);background:var(--card)}.pmi-tag strong{color:var(--p)}
+  .steps{counter-reset:step}
+  .step{background:var(--card);border:1px solid var(--b);border-radius:10px;padding:20px 20px 20px 64px;margin-bottom:12px;position:relative;counter-increment:step}
+  .step::before{content:counter(step);position:absolute;left:20px;top:20px;width:32px;height:32px;background:var(--ac);color:#fff;border-radius:50%;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:0.95rem;font-weight:700;margin-bottom:4px}
+  .step p{font-size:13px;color:var(--tm);line-height:1.55}
+  .step .tools{margin-top:8px;font-size:12px;color:var(--ac);font-weight:600}
+  .uc{background:var(--card);border:1px solid var(--b);border-left:4px solid var(--ac);border-radius:10px;padding:20px;margin-bottom:14px}
+  .uc .uc-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+  .uc .uc-num{background:var(--ac);color:#fff;font-size:11px;font-weight:800;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .uc h3{font-size:0.95rem;font-weight:700}
+  .uc .uc-phase{font-size:11px;font-weight:600;color:var(--ac);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px}
+  .uc p{font-size:13px;color:var(--tm);line-height:1.55}
+  .uc .ka-tags{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px}
+  .uc .ka-tag{font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;background:#f1f5f9;color:var(--tm)}
+  .prompt-box{margin-top:12px;background:#f8fafc;border:1px solid var(--b);border-radius:6px;padding:12px;font-size:12px;font-family:'SF Mono','Consolas',monospace;color:var(--t);white-space:pre-wrap;line-height:1.5}
+  .prompt-box::before{content:'AI prompt example';display:block;font-family:-apple-system,sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--tm);margin-bottom:6px}
+  .tool-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--b);border-radius:10px;overflow:hidden;font-size:13px;margin-top:16px}
+  .tool-table th{background:#f1f5f9;text-align:left;padding:10px 14px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--tm);border-bottom:1px solid var(--b)}
+  .tool-table td{padding:10px 14px;border-bottom:1px solid var(--b);vertical-align:top}.tool-table tr:last-child td{border-bottom:none}.tool-name{font-weight:700}
+  footer{text-align:center;padding:32px 24px;color:var(--tm);font-size:13px;border-top:1px solid var(--b);margin-top:32px}
+</style>
+</head>
+<body>
+
+<nav><a class="nav-back" href="index.html">&larr; Back</a><a href="index.html">AI + PM</a></nav>
+
+<div class="container">
+
+<div class="hero">
+  <span class="badge">Risk &amp; Analytics</span>
+  <h1>AI for Risk &amp; Project Analytics</h1>
+  <p>Predict risks before they materialize, analyze earned value, forecast budget and schedule outcomes, and identify bottlenecks using AI-driven analytics.</p>
+</div>
+
+<section>
+  <h2>PMI Alignment</h2>
+  <div class="pmi-tags">
+    <span class="pmi-tag"><strong>Process Groups:</strong> Planning, Monitoring &amp; Controlling</span>
+    <span class="pmi-tag"><strong>Knowledge Areas:</strong> Risk, Cost, Schedule, Quality, Integration</span>
+  </div>
+</section>
+
+<section>
+  <h2>5-Step Implementation Guide</h2>
+  <div class="steps">
+    <div class="step">
+      <h3>Collect &amp; Centralize Project Data</h3>
+      <p>Aggregate data from all sources: PM tools (velocity, burn-down), financial systems (budget actuals), risk logs, and issue trackers. AI needs clean, centralized data to produce meaningful analytics. Build a simple data warehouse or use your PM tool's built-in analytics.</p>
+      <div class="tools">PMI: Risk &rarr; Plan Risk Management &middot; Tools: Jira, Power BI, BigQuery</div>
+    </div>
+    <div class="step">
+      <h3>AI-Powered Risk Identification</h3>
+      <p>Use AI to scan project plans, stakeholder communications, and historical data for risk patterns. AI identifies risks humans miss &mdash; especially "unknown unknowns" from cross-referencing similar past projects. Generate a comprehensive risk register.</p>
+      <div class="tools">PMI: Risk &rarr; Identify Risks &middot; Tools: Claude, Forecast.app</div>
+    </div>
+    <div class="step">
+      <h3>Qualitative &amp; Quantitative Risk Analysis</h3>
+      <p>AI assigns probability and impact scores based on historical frequencies. For quantitative analysis, run Monte Carlo simulations to model schedule/cost confidence levels (P50, P80, P95). Visualize the probability distribution.</p>
+      <div class="tools">PMI: Risk &rarr; Perform Quantitative Risk Analysis &middot; Tools: Crystal Ball, @Risk, Claude</div>
+    </div>
+    <div class="step">
+      <h3>Set Up Predictive Dashboards</h3>
+      <p>Build dashboards that use AI to forecast: Will we hit the deadline? Will we exceed budget? Which workstreams are at risk? Earned Value metrics (SPI, CPI, EAC, ETC) are calculated automatically and trended over time.</p>
+      <div class="tools">PMI: Cost &rarr; Control Costs &middot; Tools: Power BI Copilot, Planview AI</div>
+    </div>
+    <div class="step">
+      <h3>Automate Risk Response Triggers</h3>
+      <p>Configure automated alerts: If SPI drops below 0.9, notify PM. If a risk probability changes, update the register and alert the risk owner. AI continuously monitors and escalates &mdash; turning reactive risk management into proactive.</p>
+      <div class="tools">PMI: Risk &rarr; Monitor Risks &middot; Tools: Zapier AI, Jira Automation</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Top 5 Use Cases</h2>
+
+  <div class="uc">
+    <div class="uc-head"><span class="uc-num">1</span><h3>AI Risk Identification from Project Context</h3></div>
+    <div class="uc-phase">Planning &rarr; Risk Management</div>
+    <p>Describe your project (type, team, timeline, dependencies) and AI generates a comprehensive risk register by cross-referencing thousands of known project risk patterns. Especially powerful for domains you haven't worked in before.</p>
+    <div class="ka-tags"><span class="ka-tag">Risk</span><span class="ka-tag">Integration</span></div>
+    <div class="prompt-box">Project: Cloud migration of legacy ERP system
+Team: 8 engineers, 2 DBAs, 1 architect (mix of FTE + contractors)
+Timeline: 9 months, hard deadline (license expiry)
+Dependencies: 3 external vendors, legacy system must stay live
+
+Identify 15 risks across these categories:
+- Technical, Organizational, External, PM-related
+For each: Description, Probability (1-5), Impact (1-5),
+Risk Score, Category, Suggested Mitigation</div>
+  </div>
+
+  <div class="uc">
+    <div class="uc-head"><span class="uc-num">2</span><h3>Monte Carlo Schedule Simulation</h3></div>
+    <div class="uc-phase">Planning &rarr; Schedule + Risk Management</div>
+    <p>Provide task durations with uncertainty ranges. AI runs a Monte Carlo simulation (1,000+ iterations) to predict the probability of completing by the target date and identifies which tasks contribute most to schedule risk.</p>
+    <div class="ka-tags"><span class="ka-tag">Schedule</span><span class="ka-tag">Risk</span><span class="ka-tag">Cost</span></div>
+    <div class="prompt-box">Run a Monte Carlo analysis on this schedule:
+
+Task A: 5-8-12 days (optimistic-likely-pessimistic)
+Task B: 3-5-10 days (depends on A)
+Task C: 7-10-15 days (depends on A)
+Task D: 2-3-5 days (depends on B and C)
+
+Target completion: 25 days from start
+Calculate: P50, P80, P95 completion dates
+Identify: Top risk-contributing tasks</div>
+  </div>
+
+  <div class="uc">
+    <div class="uc-head"><span class="uc-num">3</span><h3>Earned Value Analysis &amp; Forecasting</h3></div>
+    <div class="uc-phase">Monitoring &amp; Controlling &rarr; Cost + Schedule Management</div>
+    <p>Feed AI your project's PV, EV, and AC data. It calculates all EVM metrics (SV, CV, SPI, CPI, EAC, ETC, TCPI, VAC), interprets the results in plain English, and recommends corrective actions.</p>
+    <div class="ka-tags"><span class="ka-tag">Cost</span><span class="ka-tag">Schedule</span><span class="ka-tag">Integration</span></div>
+    <div class="prompt-box">Project EVM data at month 6 of 12:
+- BAC (Budget at Completion): $500,000
+- PV (Planned Value): $250,000
+- EV (Earned Value): $220,000
+- AC (Actual Cost): $260,000
+
+Calculate: SV, CV, SPI, CPI, EAC, ETC, TCPI, VAC
+Interpret each metric in plain language.
+Provide 3 corrective action recommendations.
+Forecast: Will we finish on time and on budget?</div>
+  </div>
+
+  <div class="uc">
+    <div class="uc-head"><span class="uc-num">4</span><h3>Bottleneck &amp; Dependency Analysis</h3></div>
+    <div class="uc-phase">Monitoring &amp; Controlling &rarr; Schedule + Resource Management</div>
+    <p>AI analyzes task flow, team allocation, and cycle time data to identify bottlenecks. It pinpoints which team member, skill, or process stage is the constraint and suggests rebalancing strategies.</p>
+    <div class="ka-tags"><span class="ka-tag">Schedule</span><span class="ka-tag">Resource</span><span class="ka-tag">Quality</span></div>
+    <div class="prompt-box">Here is our Kanban flow data for the last 4 sprints:
+[paste: Stage | Avg items | Avg cycle time | WIP limit]
+
+And team allocation:
+[paste: Person | Role | % allocated | Current WIP]
+
+Identify:
+1. Top 3 bottlenecks in our flow
+2. Which stages have WIP limit violations
+3. Team members at risk of burnout (over-allocated)
+4. Recommended rebalancing actions</div>
+  </div>
+
+  <div class="uc">
+    <div class="uc-head"><span class="uc-num">5</span><h3>Trend Analysis &amp; Project Health Score</h3></div>
+    <div class="uc-phase">Monitoring &amp; Controlling &rarr; Integration + Quality</div>
+    <p>AI ingests weekly project metrics over time (velocity, defect rate, budget burn, team sentiment) and produces a composite "Project Health Score" with trend direction and early warning signals.</p>
+    <div class="ka-tags"><span class="ka-tag">Integration</span><span class="ka-tag">Quality</span><span class="ka-tag">Risk</span></div>
+    <div class="prompt-box">Weekly project metrics for the last 8 weeks:
+[paste table: Week | Velocity | Defect Rate | Budget Burn % |
+ Team Sentiment (1-10) | Scope Changes]
+
+Analyze trends and produce:
+1. Overall Project Health Score (1-100) with explanation
+2. Trend direction for each metric (improving/stable/declining)
+3. Early warning signals (any metrics trending toward danger)
+4. Top 3 recommended actions for the PM this week</div>
+  </div>
+
+</section>
+
+<section>
+  <h2>Recommended Tools</h2>
+  <table class="tool-table">
+    <thead><tr><th>Tool</th><th>Best For</th><th>AI Capability</th><th>Pricing</th></tr></thead>
+    <tbody>
+      <tr><td class="tool-name">Forecast.app</td><td>AI-native project analytics</td><td>Predictive scheduling, resource optimization, budget forecast</td><td>Custom</td></tr>
+      <tr><td class="tool-name">Planview AI</td><td>Enterprise PPM</td><td>Portfolio risk analysis, capacity planning, scenario modeling</td><td>Enterprise</td></tr>
+      <tr><td class="tool-name">Power BI Copilot</td><td>Dashboard &amp; visualization</td><td>Natural language queries, auto-insights, narrative generation</td><td>M365 license</td></tr>
+      <tr><td class="tool-name">Jira + Atlassian Intelligence</td><td>Agile analytics</td><td>Sprint prediction, bottleneck detection, smart backlog</td><td>Premium plan</td></tr>
+      <tr><td class="tool-name">Claude / ChatGPT</td><td>Ad-hoc risk analysis</td><td>Risk identification, EVM calculation, scenario analysis</td><td>$20/mo+</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</div>
+<footer><a href="index.html" style="color:var(--p);text-decoration:none;font-weight:600">&larr; Back to Home</a> &middot; AI-Powered Project Management Guide</footer>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Meeting &amp; Communication - AI+PM</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--p:#2563eb;--pd:#1d4ed8;--ac:#7c3aed;--bg:#f8fafc;--card:#fff;--t:#1e293b;--tm:#64748b;--b:#e2e8f0;--g:#059669;--w:#d97706}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--t);font-size:15px;line-height:1.6}
+  nav{background:#fff;border-bottom:1px solid var(--b);padding:12px 24px;position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:16px}
+  nav a{text-decoration:none;color:var(--tm);font-size:14px;font-weight:500}.nav-back{color:var(--p);font-weight:700}
+  .container{max-width:900px;margin:0 auto;padding:0 24px}
+  .hero{padding:48px 0 32px}
+  .hero .badge{display:inline-block;background:#f0fdf4;color:var(--g);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:3px 12px;border-radius:20px;margin-bottom:12px}
+  .hero h1{font-size:2rem;font-weight:800;letter-spacing:-0.04em;margin-bottom:10px}
+  .hero p{color:var(--tm);font-size:1rem;max-width:700px}
+  section{padding:36px 0}section h2{font-size:1.3rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:6px}
+  .section-sub{color:var(--tm);margin-bottom:20px;font-size:14px}
+  .pmi-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+  .pmi-tag{font-size:11px;font-weight:700;padding:4px 12px;border-radius:6px;border:1px solid var(--b);background:var(--card)}
+  .pmi-tag strong{color:var(--p)}
+  .steps{counter-reset:step}
+  .step{background:var(--card);border:1px solid var(--b);border-radius:10px;padding:20px 20px 20px 64px;margin-bottom:12px;position:relative;counter-increment:step}
+  .step::before{content:counter(step);position:absolute;left:20px;top:20px;width:32px;height:32px;background:var(--g);color:#fff;border-radius:50%;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:0.95rem;font-weight:700;margin-bottom:4px}
+  .step p{font-size:13px;color:var(--tm);line-height:1.55}
+  .step .tools{margin-top:8px;font-size:12px;color:var(--g);font-weight:600}
+  .uc{background:var(--card);border:1px solid var(--b);border-left:4px solid var(--g);border-radius:10px;padding:20px;margin-bottom:14px}
+  .uc .uc-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+  .uc .uc-num{background:var(--g);color:#fff;font-size:11px;font-weight:800;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .uc h3{font-size:0.95rem;font-weight:700}
+  .uc .uc-phase{font-size:11px;font-weight:600;color:var(--g);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px}
+  .uc p{font-size:13px;color:var(--tm);line-height:1.55}
+  .uc .ka-tags{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px}
+  .uc .ka-tag{font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;background:#f1f5f9;color:var(--tm)}
+  .prompt-box{margin-top:12px;background:#f8fafc;border:1px solid var(--b);border-radius:6px;padding:12px;font-size:12px;font-family:'SF Mono','Consolas',monospace;color:var(--t);white-space:pre-wrap;line-height:1.5}
+  .prompt-box::before{content:'AI prompt example';display:block;font-family:-apple-system,sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--tm);margin-bottom:6px}
+  .tool-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--b);border-radius:10px;overflow:hidden;font-size:13px;margin-top:16px}
+  .tool-table th{background:#f1f5f9;text-align:left;padding:10px 14px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--tm);border-bottom:1px solid var(--b)}
+  .tool-table td{padding:10px 14px;border-bottom:1px solid var(--b);vertical-align:top}
+  .tool-table tr:last-child td{border-bottom:none}
+  .tool-name{font-weight:700}
+  footer{text-align:center;padding:32px 24px;color:var(--tm);font-size:13px;border-top:1px solid var(--b);margin-top:32px}
+</style>
+</head>
+<body>
+
+<nav><a class="nav-back" href="index.html">&larr; Back</a><a href="index.html">AI + PM</a></nav>
+
+<div class="container">
+
+<div class="hero">
+  <span class="badge">Communication</span>
+  <h1>AI for Meetings &amp; Communication</h1>
+  <p>Automate meeting transcription, extract action items, summarize decisions, draft stakeholder updates, and manage communications across all project phases.</p>
+</div>
+
+<section>
+  <h2>PMI Alignment</h2>
+  <div class="pmi-tags">
+    <span class="pmi-tag"><strong>Process Groups:</strong> Executing, Monitoring &amp; Controlling</span>
+    <span class="pmi-tag"><strong>Knowledge Areas:</strong> Communications, Stakeholder, Integration</span>
+  </div>
+</section>
+
+<section>
+  <h2>5-Step Implementation Guide</h2>
+  <p class="section-sub">From basic transcription to fully automated stakeholder communications.</p>
+  <div class="steps">
+    <div class="step">
+      <h3>Set Up Auto-Transcription for All Meetings</h3>
+      <p>Enable AI transcription (Otter.ai, Fireflies, Teams Copilot) for recurring project meetings &mdash; stand-ups, sprint reviews, steering committees. Ensure team consent and data policies are met.</p>
+      <div class="tools">PMI: Communications &rarr; Plan Communications &middot; Tools: Otter.ai, Fireflies.ai, Teams</div>
+    </div>
+    <div class="step">
+      <h3>Configure Auto-Extraction of Action Items</h3>
+      <p>Train AI to identify action items, owners, and due dates from transcripts. Route action items automatically to Jira/Asana or Slack. This replaces manual note-taking and reduces dropped tasks by 80%+.</p>
+      <div class="tools">PMI: Integration &rarr; Direct &amp; Manage Project Work &middot; Tools: Fireflies, Notion AI</div>
+    </div>
+    <div class="step">
+      <h3>Template Stakeholder Communications</h3>
+      <p>Create AI prompt templates for each stakeholder group (executive, team, client). Feed meeting data + project metrics and generate audience-appropriate updates. Adjust tone, detail level, and format per group.</p>
+      <div class="tools">PMI: Stakeholder &rarr; Manage Stakeholder Engagement &middot; Tools: Claude, ChatGPT</div>
+    </div>
+    <div class="step">
+      <h3>Automate Recurring Updates</h3>
+      <p>Connect AI to your PM tool via Zapier/Make. Every Friday, auto-pull sprint data, combine with meeting summaries, and draft a weekly update. PM reviews and sends in 5 minutes instead of 45.</p>
+      <div class="tools">PMI: Communications &rarr; Manage Communications &middot; Tools: Zapier AI, Power Automate</div>
+    </div>
+    <div class="step">
+      <h3>Build a Comms Dashboard &amp; Feedback Loop</h3>
+      <p>Track communication effectiveness: are stakeholders reading updates? Are action items getting closed? Use AI sentiment analysis on retrospective feedback to continuously improve your communication approach.</p>
+      <div class="tools">PMI: Communications &rarr; Monitor Communications &middot; Tools: Power BI Copilot, Notion AI</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Top 5 Use Cases</h2>
+  <p class="section-sub">Real-world communication scenarios where AI saves PMs hours each week.</p>
+
+  <div class="uc">
+    <div class="uc-head"><span class="uc-num">1</span><h3>Meeting Minutes with Action Item Extraction</h3></div>
+    <div class="uc-phase">Executing &rarr; Communications Management</div>
+    <p>AI transcribes a 30-minute standup, extracts decisions, action items (with owners and due dates), and open questions. Outputs a structured summary in under 60 seconds.</p>
+    <div class="ka-tags"><span class="ka-tag">Communications</span><span class="ka-tag">Integration</span></div>
+    <div class="prompt-box">Here is the transcript from today's project standup:
+"[paste transcript]"
+
+Produce a structured summary with:
+1. Key decisions made
+2. Action items (format: Owner | Action | Due Date)
+3. Open questions / blockers
+4. Topics to carry forward to next meeting</div>
+  </div>
+
+  <div class="uc">
+    <div class="uc-head"><span class="uc-num">2</span><h3>Executive Stakeholder Update</h3></div>
+    <div class="uc-phase">Executing &rarr; Stakeholder Management</div>
+    <p>AI converts granular project data into a concise executive summary with RAG status (Red/Amber/Green), key metrics, risks, and next-week focus. Tailored for C-suite audience &mdash; no jargon, results-focused.</p>
+    <div class="ka-tags"><span class="ka-tag">Stakeholder</span><span class="ka-tag">Communications</span></div>
+    <div class="prompt-box">Project data for executive update:
+- Sprint progress: 85% complete, 3 stories carried over
+- Budget: $42K spent of $50K (84%)
+- Risks: Backend dev on leave next week
+- Key wins: Payment integration deployed to staging
+
+Write a 5-sentence executive summary with RAG status.
+Tone: confident, factual, forward-looking.</div>
+  </div>
+
+  <div class="uc">
+    <div class="uc-head"><span class="uc-num">3</span><h3>Difficult Conversation / Conflict Resolution Draft</h3></div>
+    <div class="uc-phase">Executing &rarr; Stakeholder + Resource Management</div>
+    <p>AI helps PMs prepare for difficult conversations &mdash; scope disagreements, missed deadlines, team conflicts. It drafts talking points that are empathetic, factual, and solution-oriented.</p>
+    <div class="ka-tags"><span class="ka-tag">Stakeholder</span><span class="ka-tag">Resource</span></div>
+    <div class="prompt-box">Situation: The client wants to add 3 new features mid-sprint.
+Our contract scope does not include these. The relationship
+is important, and we want to keep them happy.
+
+Draft talking points for a 15-min call that:
+1. Acknowledges their needs
+2. Explains the scope/impact on timeline
+3. Proposes a solution (change request process)
+4. Maintains a positive tone</div>
+  </div>
+
+  <div class="uc">
+    <div class="uc-head"><span class="uc-num">4</span><h3>Change Request Communication</h3></div>
+    <div class="uc-phase">Monitoring &amp; Controlling &rarr; Integration + Scope</div>
+    <p>When scope changes occur, AI drafts the formal change request along with impact analysis communication to all affected parties &mdash; sponsor, team, vendors &mdash; each getting a tailored version.</p>
+    <div class="ka-tags"><span class="ka-tag">Integration</span><span class="ka-tag">Scope</span><span class="ka-tag">Communications</span></div>
+    <div class="prompt-box">Change request details:
+- Requested by: Product Owner
+- Change: Add multi-language support (5 languages)
+- Impact: +3 weeks to schedule, +$15K budget
+- Risk: QA scope doubles
+
+Draft 3 versions of this communication:
+1. For project sponsor (decision needed)
+2. For dev team (implementation impact)
+3. For QA lead (testing scope impact)</div>
+  </div>
+
+  <div class="uc">
+    <div class="uc-head"><span class="uc-num">5</span><h3>Retrospective Facilitation &amp; Insight Synthesis</h3></div>
+    <div class="uc-phase">Closing &rarr; Integration + Communications</div>
+    <p>AI analyzes anonymous retro survey data, meeting transcripts, and sprint metrics. It identifies recurring themes, sentiment trends, and generates actionable improvement recommendations.</p>
+    <div class="ka-tags"><span class="ka-tag">Communications</span><span class="ka-tag">Quality</span><span class="ka-tag">Integration</span></div>
+    <div class="prompt-box">Here are anonymous retrospective responses from 8 team members:
+[paste responses]
+
+And here is the sprint metrics summary:
+[paste velocity, defect rate, cycle time]
+
+Analyze and produce:
+1. Top 3 themes (positive)
+2. Top 3 themes (needs improvement)
+3. Sentiment score (1-10)
+4. 3 specific, actionable recommendations for next sprint</div>
+  </div>
+
+</section>
+
+<section>
+  <h2>Recommended Tools</h2>
+  <table class="tool-table">
+    <thead><tr><th>Tool</th><th>Best For</th><th>AI Capability</th><th>Pricing</th></tr></thead>
+    <tbody>
+      <tr><td class="tool-name">Otter.ai</td><td>Meeting transcription</td><td>Real-time transcription, action items, summaries</td><td>Free / $17/mo</td></tr>
+      <tr><td class="tool-name">Fireflies.ai</td><td>Meeting intelligence</td><td>Transcription, topic detection, CRM integration</td><td>Free / $19/mo</td></tr>
+      <tr><td class="tool-name">Microsoft Copilot</td><td>Teams / M365 users</td><td>Meeting recap, email drafting, document summary</td><td>M365 license</td></tr>
+      <tr><td class="tool-name">Notion AI</td><td>Wiki &amp; docs teams</td><td>Summarize pages, extract actions, draft content</td><td>$10/user/mo</td></tr>
+      <tr><td class="tool-name">Claude / ChatGPT</td><td>Ad-hoc comms drafting</td><td>Stakeholder updates, difficult convos, templates</td><td>$20/mo+</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</div>
+<footer><a href="index.html" style="color:var(--p);text-decoration:none;font-weight:600">&larr; Back to Home</a> &middot; AI-Powered Project Management Guide</footer>
+</body>
+</html>

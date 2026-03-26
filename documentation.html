@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Documentation &amp; Reporting - AI+PM</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--p:#2563eb;--bg:#f8fafc;--card:#fff;--t:#1e293b;--tm:#64748b;--b:#e2e8f0;--g:#059669;--w:#d97706;--ac:#7c3aed}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--t);font-size:15px;line-height:1.6}
+  nav{background:#fff;border-bottom:1px solid var(--b);padding:12px 24px;position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:16px}
+  nav a{text-decoration:none;color:var(--tm);font-size:14px;font-weight:500}.nav-back{color:var(--p);font-weight:700}
+  .container{max-width:900px;margin:0 auto;padding:0 24px}
+  .hero{padding:48px 0 32px}
+  .hero .badge{display:inline-block;background:#fefce8;color:var(--w);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:3px 12px;border-radius:20px;margin-bottom:12px}
+  .hero h1{font-size:2rem;font-weight:800;letter-spacing:-0.04em;margin-bottom:10px}
+  .hero p{color:var(--tm);font-size:1rem;max-width:700px}
+  section{padding:36px 0}section h2{font-size:1.3rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:6px}
+  .section-sub{color:var(--tm);margin-bottom:20px;font-size:14px}
+  .pmi-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+  .pmi-tag{font-size:11px;font-weight:700;padding:4px 12px;border-radius:6px;border:1px solid var(--b);background:var(--card)}.pmi-tag strong{color:var(--p)}
+  .steps{counter-reset:step}
+  .step{background:var(--card);border:1px solid var(--b);border-radius:10px;padding:20px 20px 20px 64px;margin-bottom:12px;position:relative;counter-increment:step}
+  .step::before{content:counter(step);position:absolute;left:20px;top:20px;width:32px;height:32px;background:var(--w);color:#fff;border-radius:50%;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:0.95rem;font-weight:700;margin-bottom:4px}
+  .step p{font-size:13px;color:var(--tm);line-height:1.55}
+  .step .tools{margin-top:8px;font-size:12px;color:var(--w);font-weight:600}
+  .uc{background:var(--card);border:1px solid var(--b);border-left:4px solid var(--w);border-radius:10px;padding:20px;margin-bottom:14px}
+  .uc .uc-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+  .uc .uc-num{background:var(--w);color:#fff;font-size:11px;font-weight:800;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .uc h3{font-size:0.95rem;font-weight:700}
+  .uc .uc-phase{font-size:11px;font-weight:600;color:var(--w);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px}
+  .uc p{font-size:13px;color:var(--tm);line-height:1.55}
+  .uc .ka-tags{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px}
+  .uc .ka-tag{font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;background:#f1f5f9;color:var(--tm)}
+  .prompt-box{margin-top:12px;background:#f8fafc;border:1px solid var(--b);border-radius:6px;padding:12px;font-size:12px;font-family:'SF Mono','Consolas',monospace;color:var(--t);white-space:pre-wrap;line-height:1.5}
+  .prompt-box::before{content:'AI prompt example';display:block;font-family:-apple-system,sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--tm);margin-bottom:6px}
+  .tool-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--b);border-radius:10px;overflow:hidden;font-size:13px;margin-top:16px}
+  .tool-table th{background:#f1f5f9;text-align:left;padding:10px 14px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--tm);border-bottom:1px solid var(--b)}
+  .tool-table td{padding:10px 14px;border-bottom:1px solid var(--b);vertical-align:top}.tool-table tr:last-child td{border-bottom:none}.tool-name{font-weight:700}
+  footer{text-align:center;padding:32px 24px;color:var(--tm);font-size:13px;border-top:1px solid var(--b);margin-top:32px}
+</style>
+</head>
+<body>
+
+<nav><a class="nav-back" href="index.html">&larr; Back</a><a href="index.html">AI + PM</a></nav>
+
+<div class="container">
+
+<div class="hero">
+  <span class="badge">Documentation &amp; Reporting</span>
+  <h1>AI for Documentation &amp; Reporting</h1>
+  <p>Auto-generate project charters, status reports, risk registers, change logs, and lessons-learned documents. Reduce report prep from 45 minutes to 5.</p>
+</div>
+
+<section>
+  <h2>PMI Alignment</h2>
+  <div class="pmi-tags">
+    <span class="pmi-tag"><strong>Process Groups:</strong> Initiating, Planning, Monitoring &amp; Controlling, Closing</span>
+    <span class="pmi-tag"><strong>Knowledge Areas:</strong> Integration, Scope, Communications, Quality, Risk</span>
+  </div>
+</section>
+
+<section>
+  <h2>5-Step Implementation Guide</h2>
+  <div class="steps">
+    <div class="step">
+      <h3>Audit Existing Document Templates</h3>
+      <p>Inventory every PM artifact your org uses &mdash; charter, scope statement, WBS, risk register, status report, change log, lessons learned. Rate each by effort-to-produce (high = AI candidate). Prioritize the top 5.</p>
+      <div class="tools">PMI: Integration &rarr; Develop Project Management Plan</div>
+    </div>
+    <div class="step">
+      <h3>Create AI Prompt Templates per Document</h3>
+      <p>For each artifact, build a reusable prompt template with placeholders. Include your org's format, tone, and required sections. Store in a shared Notion/Confluence page for team reuse.</p>
+      <div class="tools">PMI: Quality &rarr; Plan Quality Management &middot; Tools: Claude, Notion AI</div>
+    </div>
+    <div class="step">
+      <h3>Connect Data Sources for Auto-Population</h3>
+      <p>Link Jira/Asana metrics, timesheets, budget data, and risk logs to your AI pipeline. The more real-time data AI has, the less manual input you need. Use Zapier or direct API for connections.</p>
+      <div class="tools">PMI: Integration &rarr; Monitor &amp; Control Project Work &middot; Tools: Zapier, Make</div>
+    </div>
+    <div class="step">
+      <h3>Generate, Review, Refine</h3>
+      <p>AI generates the first draft (80% done). PM reviews for accuracy, adds judgment-based commentary (stakeholder sentiment, strategic context), and polishes. Total time: 5-10 min vs. 45-60 min manually.</p>
+      <div class="tools">PMI: Communications &rarr; Manage Communications</div>
+    </div>
+    <div class="step">
+      <h3>Archive &amp; Build Knowledge Base</h3>
+      <p>Store all generated documents with metadata (project, phase, date). AI can later query this knowledge base to improve future estimates, identify recurring risks, and build organizational process assets (OPAs).</p>
+      <div class="tools">PMI: Closing &rarr; Close Project or Phase &middot; Tools: Confluence AI, Notion AI</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Top 5 Use Cases</h2>
+
+  <div class="uc">
+    <div class="uc-head"><span class="uc-num">1</span><h3>Project Charter Generation</h3></div>
+    <div class="uc-phase">Initiating &rarr; Integration Management</div>
+    <p>Feed AI the business case, stakeholder list, high-level scope, and constraints. Get a structured charter with purpose, objectives, milestones, assumptions, and success criteria &mdash; ready for sponsor review.</p>
+    <div class="ka-tags"><span class="ka-tag">Integration</span><span class="ka-tag">Scope</span><span class="ka-tag">Stakeholder</span></div>
+    <div class="prompt-box">Create a project charter using this information:
+- Business case: [paste]
+- Sponsor: [name, role]
+- Key stakeholders: [list]
+- High-level scope: [description]
+- Target timeline: Q3 2026 launch
+- Budget constraint: $200K
+
+Sections needed: Purpose, Objectives, Scope Summary,
+Key Milestones, Assumptions, Constraints, Risks,
+Success Criteria, Project Manager Authority Level.</div>
+  </div>
+
+  <div class="uc">
+    <div class="uc-head"><span class="uc-num">2</span><h3>Weekly Status Report (RAG)</h3></div>
+    <div class="uc-phase">Monitoring &amp; Controlling &rarr; Communications + Integration</div>
+    <p>AI pulls sprint metrics, budget actuals, risk log updates, and meeting action items to draft a RAG-status executive report. PM adds a 2-sentence strategic commentary and sends.</p>
+    <div class="ka-tags"><span class="ka-tag">Communications</span><span class="ka-tag">Integration</span><span class="ka-tag">Cost</span></div>
+    <div class="prompt-box">Generate a weekly project status report:
+
+Sprint data: 21 of 25 stories done, 4 carried over
+Budget: $38,200 of $50,000 spent (76%), forecast $48K
+Risks: R-07 (vendor delay) probability increased to High
+Milestones: API integration complete (on time)
+Blockers: Awaiting security review sign-off
+
+Format: 1-page with RAG status (Overall, Schedule,
+Budget, Scope, Risk), key accomplishments, issues,
+next week priorities. Executive-friendly tone.</div>
+  </div>
+
+  <div class="uc">
+    <div class="uc-head"><span class="uc-num">3</span><h3>Risk Register Creation &amp; Update</h3></div>
+    <div class="uc-phase">Planning &rarr; Risk Management</div>
+    <p>Describe the project context and AI generates a comprehensive risk register with risk ID, category, description, probability, impact, risk score, owner, and mitigation strategy for each identified risk.</p>
+    <div class="ka-tags"><span class="ka-tag">Risk</span><span class="ka-tag">Quality</span></div>
+    <div class="prompt-box">Project context: E-commerce platform migration from
+monolith to microservices. 6-month timeline, team of 12,
+3 external vendor dependencies.
+
+Generate a risk register with 10 risks. For each:
+- Risk ID, Category (Technical/External/Organizational)
+- Description, Probability (1-5), Impact (1-5)
+- Risk Score (P x I), Risk Owner
+- Mitigation Strategy, Contingency Plan</div>
+  </div>
+
+  <div class="uc">
+    <div class="uc-head"><span class="uc-num">4</span><h3>Change Log &amp; Impact Assessment</h3></div>
+    <div class="uc-phase">Monitoring &amp; Controlling &rarr; Integration + Scope</div>
+    <p>When a change request comes in, AI documents the change, performs impact analysis (schedule, cost, quality, risk), and drafts the change log entry with approval routing suggestions.</p>
+    <div class="ka-tags"><span class="ka-tag">Integration</span><span class="ka-tag">Scope</span><span class="ka-tag">Schedule</span><span class="ka-tag">Cost</span></div>
+    <div class="prompt-box">Document this change request:
+- Requester: Product Owner
+- Change: Add SSO integration (SAML + OAuth)
+- Current schedule: 4 weeks remaining
+- Team capacity: Fully allocated
+
+Produce:
+1. Change log entry (ID, date, description, requester)
+2. Impact analysis: schedule, cost, quality, risk
+3. Recommendation (approve/defer/reject) with rationale
+4. Approval routing suggestion</div>
+  </div>
+
+  <div class="uc">
+    <div class="uc-head"><span class="uc-num">5</span><h3>Lessons Learned Report</h3></div>
+    <div class="uc-phase">Closing &rarr; Integration + Quality</div>
+    <p>At project close, AI analyzes all retrospective notes, survey data, metrics (planned vs. actual), and risk outcomes. It synthesizes a lessons-learned document that feeds into your org's OPA library.</p>
+    <div class="ka-tags"><span class="ka-tag">Integration</span><span class="ka-tag">Quality</span><span class="ka-tag">Communications</span></div>
+    <div class="prompt-box">Project "Phoenix" has completed. Analyze this data:
+- 12 sprint retrospective summaries: [paste]
+- Final survey (8 respondents): [paste]
+- Planned vs actual: 26 weeks planned, 30 actual
+- Budget: $195K planned, $210K actual
+- Defect rate: 12 escaped to production
+
+Produce a Lessons Learned report:
+1. Executive summary
+2. What went well (top 5)
+3. What needs improvement (top 5)
+4. Root cause analysis for schedule/budget overrun
+5. Actionable recommendations for future projects</div>
+  </div>
+
+</section>
+
+<section>
+  <h2>Recommended Tools</h2>
+  <table class="tool-table">
+    <thead><tr><th>Tool</th><th>Best For</th><th>AI Capability</th><th>Pricing</th></tr></thead>
+    <tbody>
+      <tr><td class="tool-name">Claude</td><td>Long-form doc generation</td><td>Charter, reports, risk registers, analysis</td><td>$20/mo+</td></tr>
+      <tr><td class="tool-name">Notion AI</td><td>Wiki-based documentation</td><td>Summarize, extract, auto-fill templates</td><td>$10/user/mo</td></tr>
+      <tr><td class="tool-name">Confluence AI</td><td>Enterprise docs (Atlassian)</td><td>Page summaries, smart templates</td><td>Premium plan</td></tr>
+      <tr><td class="tool-name">Power BI Copilot</td><td>Data-driven reports</td><td>Narrative generation from dashboards</td><td>M365 license</td></tr>
+      <tr><td class="tool-name">Gamma.app</td><td>Presentations from data</td><td>Auto-generate slide decks from prompts</td><td>Free / $10/mo</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</div>
+<footer><a href="index.html" style="color:var(--p);text-decoration:none;font-weight:600">&larr; Back to Home</a> &middot; AI-Powered Project Management Guide</footer>
+</body>
+</html>

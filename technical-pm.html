@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI for Technical PMs - AI+PM</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--p:#2563eb;--pd:#1d4ed8;--bg:#f8fafc;--card:#fff;--t:#1e293b;--tm:#64748b;--b:#e2e8f0;--g:#059669;--w:#d97706;--ac:#7c3aed}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--t);font-size:15px;line-height:1.6}
+  nav{background:#fff;border-bottom:1px solid var(--b);padding:12px 24px;position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:16px}
+  nav a{text-decoration:none;color:var(--tm);font-size:14px;font-weight:500}.nav-back{color:var(--p);font-weight:700}
+  .container{max-width:900px;margin:0 auto;padding:0 24px}
+  .hero{padding:48px 0 32px}
+  .hero .badge{display:inline-block;background:#eff6ff;color:var(--p);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:3px 12px;border-radius:20px;margin-bottom:12px}
+  .hero h1{font-size:2rem;font-weight:800;letter-spacing:-0.04em;margin-bottom:10px}
+  .hero p{color:var(--tm);font-size:1rem;max-width:700px}
+  section{padding:36px 0}section h2{font-size:1.3rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:6px}
+  .section-sub{color:var(--tm);margin-bottom:20px;font-size:14px}
+  .pmi-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+  .pmi-tag{font-size:11px;font-weight:700;padding:4px 12px;border-radius:6px;border:1px solid var(--b);background:var(--card)}.pmi-tag strong{color:var(--p)}
+  .steps{counter-reset:step}
+  .step{background:var(--card);border:1px solid var(--b);border-radius:10px;padding:20px 20px 20px 64px;margin-bottom:12px;position:relative;counter-increment:step}
+  .step::before{content:counter(step);position:absolute;left:20px;top:20px;width:32px;height:32px;background:var(--pd);color:#fff;border-radius:50%;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:0.95rem;font-weight:700;margin-bottom:4px}
+  .step p{font-size:13px;color:var(--tm);line-height:1.55}
+  .step .tools{margin-top:8px;font-size:12px;color:var(--pd);font-weight:600}
+  .uc{background:var(--card);border:1px solid var(--b);border-left:4px solid var(--pd);border-radius:10px;padding:20px;margin-bottom:14px}
+  .uc .uc-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+  .uc .uc-num{background:var(--pd);color:#fff;font-size:11px;font-weight:800;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .uc h3{font-size:0.95rem;font-weight:700}
+  .uc .uc-phase{font-size:11px;font-weight:600;color:var(--pd);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px}
+  .uc p{font-size:13px;color:var(--tm);line-height:1.55}
+  .uc .ka-tags{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px}
+  .uc .ka-tag{font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;background:#f1f5f9;color:var(--tm)}
+  .prompt-box{margin-top:12px;background:#f8fafc;border:1px solid var(--b);border-radius:6px;padding:12px;font-size:12px;font-family:'SF Mono','Consolas',monospace;color:var(--t);white-space:pre-wrap;line-height:1.5}
+  .prompt-box::before{content:'AI prompt example';display:block;font-family:-apple-system,sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--tm);margin-bottom:6px}
+  .tool-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--b);border-radius:10px;overflow:hidden;font-size:13px;margin-top:16px}
+  .tool-table th{background:#f1f5f9;text-align:left;padding:10px 14px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--tm);border-bottom:1px solid var(--b)}
+  .tool-table td{padding:10px 14px;border-bottom:1px solid var(--b);vertical-align:top}.tool-table tr:last-child td{border-bottom:none}.tool-name{font-weight:700}
+  footer{text-align:center;padding:32px 24px;color:var(--tm);font-size:13px;border-top:1px solid var(--b);margin-top:32px}
+</style>
+</head>
+<body>
+
+<nav><a class="nav-back" href="index.html">&larr; Back</a><a href="index.html">AI + PM</a></nav>
+
+<div class="container">
+
+<div class="hero">
+  <span class="badge">Technical PM</span>
+  <h1>AI Coding &amp; Dev Assistants for Technical PMs</h1>
+  <p>Bridge the gap between engineering and management. Use AI to review PRs, estimate story points, generate test plans, triage bugs, and predict sprint velocity &mdash; without writing code yourself.</p>
+</div>
+
+<section>
+  <h2>PMI Alignment</h2>
+  <div class="pmi-tags">
+    <span class="pmi-tag"><strong>Process Groups:</strong> Executing, Monitoring &amp; Controlling, Closing</span>
+    <span class="pmi-tag"><strong>Knowledge Areas:</strong> Quality, Schedule, Scope, Resource, Integration</span>
+  </div>
+</section>
+
+<section>
+  <h2>5-Step Implementation Guide</h2>
+  <div class="steps">
+    <div class="step">
+      <h3>Integrate AI into Your Dev Toolchain</h3>
+      <p>Connect AI to GitHub/GitLab, Jira, and Slack. Set up GitHub Copilot or Claude Code for the engineering team. As a technical PM, you'll use AI to understand code changes at a high level &mdash; reviewing PR summaries, not line-by-line code.</p>
+      <div class="tools">PMI: Integration &rarr; Direct &amp; Manage Work &middot; Tools: GitHub Copilot, Claude Code, Linear</div>
+    </div>
+    <div class="step">
+      <h3>AI-Assisted Story Point Estimation</h3>
+      <p>Paste user stories and acceptance criteria into AI. It compares against your team's historical stories (velocity data, complexity patterns) and suggests story point estimates. Calibrate by comparing AI estimates vs. team poker results over 2-3 sprints.</p>
+      <div class="tools">PMI: Schedule &rarr; Estimate Activity Durations &middot; Tools: Linear AI, Claude</div>
+    </div>
+    <div class="step">
+      <h3>Auto-Generate Test Plans from Requirements</h3>
+      <p>Feed AI the user stories and acceptance criteria. It generates comprehensive test plans: happy path, edge cases, negative tests, performance scenarios. QA reviews and customizes &mdash; AI provides the 80% starting point.</p>
+      <div class="tools">PMI: Quality &rarr; Plan Quality Management &middot; Tools: Claude, ChatGPT</div>
+    </div>
+    <div class="step">
+      <h3>Intelligent Bug Triage &amp; Prioritization</h3>
+      <p>AI analyzes incoming bugs: severity classification from description + stack traces, affected component identification, duplicate detection, and priority recommendation. Reduces triage meetings by 50%+ for mature teams.</p>
+      <div class="tools">PMI: Quality &rarr; Control Quality &middot; Tools: Jira AI, Linear AI, Sentry AI</div>
+    </div>
+    <div class="step">
+      <h3>Sprint Analytics &amp; Release Forecasting</h3>
+      <p>AI analyzes sprint-over-sprint data (velocity trends, defect escape rate, cycle time, code churn) to predict release readiness. It flags when velocity is declining, when defect density suggests quality issues, and whether the release date is realistic.</p>
+      <div class="tools">PMI: Schedule &rarr; Control Schedule &middot; Tools: Jira AI, Forecast.app, Power BI</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Top 5 Use Cases</h2>
+
+  <div class="uc">
+    <div class="uc-head"><span class="uc-num">1</span><h3>PR Summary &amp; Impact Assessment for PMs</h3></div>
+    <div class="uc-phase">Executing &rarr; Quality + Integration Management</div>
+    <p>AI summarizes pull requests in plain English for technical PMs who need to understand what changed without reading every line of code. It flags high-risk changes (database migrations, API breaking changes, security-sensitive files).</p>
+    <div class="ka-tags"><span class="ka-tag">Quality</span><span class="ka-tag">Integration</span><span class="ka-tag">Risk</span></div>
+    <div class="prompt-box">Here is the diff for PR #347: [paste diff or link]
+
+As a technical PM, I need to understand:
+1. What does this PR change? (2-3 sentence summary)
+2. Which features/user stories does it relate to?
+3. Risk level: Low/Medium/High and why
+4. Does it include database changes or API changes?
+5. Any concerns I should raise in standup?</div>
+  </div>
+
+  <div class="uc">
+    <div class="uc-head"><span class="uc-num">2</span><h3>Story Point Estimation from User Stories</h3></div>
+    <div class="uc-phase">Planning &rarr; Schedule + Scope Management</div>
+    <p>AI analyzes user story text, acceptance criteria, and your team's historical velocity to suggest story point estimates. Useful for pre-grooming preparation so the PM comes to planning with data-backed initial estimates.</p>
+    <div class="ka-tags"><span class="ka-tag">Schedule</span><span class="ka-tag">Scope</span><span class="ka-tag">Resource</span></div>
+    <div class="prompt-box">Our team uses Fibonacci story points (1,2,3,5,8,13).
+Average velocity: 32 pts/sprint. Team: 4 devs + 1 QA.
+
+Estimate these stories:
+1. "As a user, I can reset my password via email link"
+   AC: Email sent within 30s, link expires in 24h,
+   must change on first use
+2. "As an admin, I can export user data to CSV"
+   AC: Filters by date range, includes all user fields,
+   handles 100K+ records
+3. "As a user, I see real-time notifications"
+   AC: WebSocket-based, badge count, click to navigate
+
+For each: Estimated points, complexity drivers,
+assumptions, and confidence level.</div>
+  </div>
+
+  <div class="uc">
+    <div class="uc-head"><span class="uc-num">3</span><h3>Test Plan Generation from Acceptance Criteria</h3></div>
+    <div class="uc-phase">Planning &rarr; Quality Management</div>
+    <p>AI converts acceptance criteria into comprehensive test cases covering happy path, edge cases, error scenarios, and performance. QA reviews and adjusts &mdash; reducing test plan creation from hours to minutes.</p>
+    <div class="ka-tags"><span class="ka-tag">Quality</span><span class="ka-tag">Scope</span></div>
+    <div class="prompt-box">User Story: "As a user, I can add items to my shopping cart"
+Acceptance Criteria:
+- Can add 1-99 of any in-stock item
+- Out-of-stock items show "Notify Me" instead of "Add"
+- Cart persists across sessions (logged in users)
+- Guest cart expires after 24 hours
+- Cart shows subtotal updated in real time
+
+Generate a test plan with:
+- Happy path tests (5+)
+- Edge case tests (5+)
+- Negative/error tests (5+)
+- Performance test scenarios (2+)
+Format: Test ID | Type | Steps | Expected Result</div>
+  </div>
+
+  <div class="uc">
+    <div class="uc-head"><span class="uc-num">4</span><h3>Bug Triage &amp; Root Cause Hypothesis</h3></div>
+    <div class="uc-phase">Monitoring &amp; Controlling &rarr; Quality Management</div>
+    <p>When a bug comes in with a stack trace and reproduction steps, AI classifies severity, identifies the likely affected component, checks for duplicates, suggests root cause hypotheses, and recommends priority &mdash; all before a developer looks at it.</p>
+    <div class="ka-tags"><span class="ka-tag">Quality</span><span class="ka-tag">Integration</span></div>
+    <div class="prompt-box">Bug report:
+Title: "Checkout fails intermittently on mobile"
+Steps: 1. Add item to cart 2. Go to checkout
+  3. Enter payment details 4. Click "Pay" → 500 error
+Stack trace: [paste]
+Frequency: ~15% of mobile checkout attempts
+Browser: Safari iOS 17+
+
+Analyze and provide:
+1. Severity classification (Critical/High/Medium/Low)
+2. Affected component (best guess from stack trace)
+3. Likely root cause hypothesis (top 3)
+4. Duplicate check: similar to any common patterns?
+5. Recommended priority and suggested assignee role</div>
+  </div>
+
+  <div class="uc">
+    <div class="uc-head"><span class="uc-num">5</span><h3>Sprint Velocity Prediction &amp; Release Readiness</h3></div>
+    <div class="uc-phase">Monitoring &amp; Controlling &rarr; Schedule + Quality Management</div>
+    <p>AI analyzes historical sprint data to predict next sprint's velocity, forecast release dates, and flag quality concerns (rising defect escape rate, increasing cycle time). Enables data-driven release go/no-go decisions.</p>
+    <div class="ka-tags"><span class="ka-tag">Schedule</span><span class="ka-tag">Quality</span><span class="ka-tag">Risk</span></div>
+    <div class="prompt-box">Sprint data for the last 8 sprints:
+[Sprint | Committed | Delivered | Defects Found | Defects Escaped | Avg Cycle Time]
+S1: 35 | 32 | 8 | 1 | 2.1d
+S2: 34 | 30 | 12 | 2 | 2.3d
+S3: 36 | 34 | 6 | 0 | 1.9d
+S4: 38 | 31 | 15 | 3 | 2.8d
+S5: 33 | 33 | 7 | 1 | 2.0d
+S6: 35 | 29 | 18 | 4 | 3.1d
+S7: 32 | 28 | 14 | 3 | 3.0d
+S8: 34 | 27 | 16 | 5 | 3.2d
+
+Remaining backlog: 180 story points
+Release target: 6 sprints from now
+
+Analyze:
+1. Velocity trend (improving/stable/declining?)
+2. Quality trend (defect escape rate direction?)
+3. Predicted velocity for next sprint (with range)
+4. Will we hit the release date? (probability %)
+5. Top concerns and PM recommended actions</div>
+  </div>
+
+</section>
+
+<section>
+  <h2>Recommended Tools</h2>
+  <table class="tool-table">
+    <thead><tr><th>Tool</th><th>Best For</th><th>AI Capability</th><th>Pricing</th></tr></thead>
+    <tbody>
+      <tr><td class="tool-name">Claude Code</td><td>Code understanding for PMs</td><td>PR summaries, codebase Q&A, test generation</td><td>Included w/ Claude</td></tr>
+      <tr><td class="tool-name">GitHub Copilot</td><td>Developer productivity</td><td>Code completion, PR summaries, code review</td><td>$10-39/user/mo</td></tr>
+      <tr><td class="tool-name">Linear AI</td><td>Issue tracking + AI</td><td>Auto-triage, duplicate detection, smart labels</td><td>Free / $8/user/mo</td></tr>
+      <tr><td class="tool-name">Jira + Atlassian Intelligence</td><td>Enterprise Agile</td><td>Smart backlog, velocity insights, AI summaries</td><td>Premium plan</td></tr>
+      <tr><td class="tool-name">Sentry AI</td><td>Error monitoring</td><td>Auto-grouping, root cause analysis, impact scoring</td><td>Free / $26/mo+</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</div>
+<footer><a href="index.html" style="color:var(--p);text-decoration:none;font-weight:600">&larr; Back to Home</a> &middot; AI-Powered Project Management Guide</footer>
+</body>
+</html>

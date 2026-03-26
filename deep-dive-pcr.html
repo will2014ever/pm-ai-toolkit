@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep Dive 1: PCR &amp; Lessons Learned - PM AI Toolkit</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--p:#2563eb;--pd:#1d4ed8;--bg:#f8fafc;--card:#fff;--t:#1e293b;--tm:#64748b;--b:#e2e8f0;--g:#059669;--w:#d97706;--ac:#7c3aed}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--t);font-size:15px;line-height:1.6}
+  nav{background:#fff;border-bottom:1px solid var(--b);padding:12px 24px;position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:16px}
+  nav a{text-decoration:none;color:var(--tm);font-size:14px;font-weight:500}.nav-back{color:var(--p);font-weight:700}
+  .container{max-width:900px;margin:0 auto;padding:0 24px}
+  .hero{padding:48px 0 28px}
+  .hero .badge{display:inline-block;background:#f5f3ff;color:var(--ac);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:3px 12px;border-radius:20px;margin-bottom:12px}
+  .hero h1{font-size:1.8rem;font-weight:800;letter-spacing:-0.04em;margin-bottom:10px}
+  .hero p{color:var(--tm);font-size:1rem;max-width:700px}
+  section{padding:32px 0}section h2{font-size:1.2rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:6px}
+  .section-sub{color:var(--tm);margin-bottom:18px;font-size:14px}
+  .callout{background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:14px 18px;font-size:13px;color:var(--pd);font-weight:500;line-height:1.5;margin:16px 0}
+  .steps{counter-reset:step}
+  .step{background:var(--card);border:1px solid var(--b);border-radius:10px;padding:20px 20px 20px 64px;margin-bottom:12px;position:relative;counter-increment:step}
+  .step::before{content:counter(step);position:absolute;left:20px;top:20px;width:32px;height:32px;background:var(--ac);color:#fff;border-radius:50%;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:0.95rem;font-weight:700;margin-bottom:4px}
+  .step p{font-size:13px;color:var(--tm);line-height:1.55}
+  .step .tools{margin-top:8px;font-size:12px;color:var(--ac);font-weight:600}
+  .prompt-box{background:#f8fafc;border:1px solid var(--b);border-radius:8px;padding:14px;font-size:12px;font-family:'SF Mono','Consolas',monospace;color:var(--t);white-space:pre-wrap;line-height:1.5;margin:12px 0}
+  .prompt-box::before{content:attr(data-label);display:block;font-family:-apple-system,sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--tm);margin-bottom:6px}
+  .pmi-tags{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+  .pmi-tag{font-size:11px;font-weight:700;padding:4px 12px;border-radius:6px;border:1px solid var(--b);background:var(--card)}.pmi-tag strong{color:var(--p)}
+  .tip{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:12px 16px;font-size:13px;color:#065f46;margin:12px 0}
+  .tip strong{color:#047857}
+  footer{text-align:center;padding:32px 24px;color:var(--tm);font-size:13px;border-top:1px solid var(--b);margin-top:32px}
+</style>
+</head>
+<body>
+<nav><a class="nav-back" href="index.html">&larr; Back</a><a href="index.html">PM AI Toolkit</a></nav>
+<div class="container">
+
+<div class="hero">
+  <span class="badge">Deep Dive 1</span>
+  <h1>PCR &amp; Lessons-Learned Assistant</h1>
+  <p>A source-grounded post-mortem workflow is one of the cleanest AI starting points because the input set is known and the output is easy to review.</p>
+</div>
+
+<div class="pmi-tags">
+  <span class="pmi-tag"><strong>Lifecycle:</strong> Post MP (Closing)</span>
+  <span class="pmi-tag"><strong>PMI:</strong> Integration, Quality, Communications</span>
+  <span class="pmi-tag"><strong>AI Agent:</strong> NotebookLM + LogiQ</span>
+</div>
+
+<section>
+  <h2>Why This Matters</h2>
+  <p class="section-sub">PCR preparation is one of the most time-consuming PM tasks. It requires pulling data from dozens of documents, reconstructing timelines, and synthesizing months of decisions into a coherent narrative. AI reduces this from days to hours.</p>
+</section>
+
+<section>
+  <h2>Recommended Workflow</h2>
+  <div class="steps">
+    <div class="step">
+      <h3>Gather the Project Source Set</h3>
+      <p>Collect all key artifacts: PRD, GPS, SW spec, milestone decks, key meeting minutes, issue history, change history, test reports, and risk logs. This becomes the "source of truth" for the PCR. Be thorough &mdash; NotebookLM can only work with what you give it.</p>
+      <div class="tools">Typical: 15-30 documents per project</div>
+    </div>
+    <div class="step">
+      <h3>Consolidate &amp; Convert Files</h3>
+      <p>Use LogiQ or a simple script to convert files to reviewable formats (PDF, plain text). Remove duplicates and clearly outdated drafts. Organize by project phase for easier synthesis.</p>
+      <div class="tools">Tools: LogiQ for quick conversion, batch PDF tools</div>
+    </div>
+    <div class="step">
+      <h3>Load into NotebookLM for Grounded Synthesis</h3>
+      <p>Upload the curated document set into NotebookLM. Use it for: timeline reconstruction, key decision extraction, risk outcome tracking, and draft summary generation. Every output is traceable to a source document.</p>
+      <div class="tools">Tools: NotebookLM (primary), LogiQ (supplementary analysis)</div>
+    </div>
+    <div class="step">
+      <h3>Review, Correct, and Finalize</h3>
+      <p>PM reviews the AI-generated draft for accuracy. Add human judgment: stakeholder sentiment, political context, strategic lessons that aren't captured in documents. Convert into the final PCR narrative and deck format.</p>
+      <div class="tools">Output: Final PCR deck + lessons-learned database entry</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Prompt Templates</h2>
+
+  <div class="prompt-box" data-label="NotebookLM: Timeline Reconstruction">Based on all uploaded project documents, reconstruct
+the project timeline from kickoff to launch. Include:
+1. Key milestones and actual dates
+2. Major scope changes with dates and rationale
+3. Significant risk events and how they were resolved
+4. Schedule variances (planned vs. actual)
+Cite the source document for each event.</div>
+
+  <div class="prompt-box" data-label="NotebookLM: Lessons-Learned Extraction">Analyze all project documents and extract:
+1. Top 5 things that went well (with evidence)
+2. Top 5 things that should improve (with evidence)
+3. Decisions that had the biggest positive impact
+4. Decisions that had the biggest negative impact
+5. Recurring themes across milestone reviews
+Group by category: Technical, Process, Communication,
+Resource, Vendor/External</div>
+
+  <div class="prompt-box" data-label="LogiQ: PCR Executive Summary Draft">Using these findings from the project review:
+[paste NotebookLM synthesis]
+
+Draft a 1-page executive PCR summary with:
+- Project overview (scope, timeline, team)
+- Key results vs. original targets
+- Top 3 successes and top 3 improvement areas
+- Root cause analysis for major variances
+- Actionable recommendations for future projects
+Tone: factual, constructive, forward-looking.</div>
+</section>
+
+<div class="callout">
+  <strong>PM value:</strong> Faster PCR prep, clearer storyline, easier knowledge reuse across projects. What used to take 2-3 days now takes 3-4 hours of focused work.
+</div>
+
+<div class="tip">
+  <strong>Tip:</strong> Build a standard source checklist for your team. Every project should collect the same set of artifacts. This makes each PCR faster because the AI workflow is repeatable.
+</div>
+
+</div>
+<footer><a href="index.html" style="color:var(--p);text-decoration:none;font-weight:600">&larr; Back to Home</a> &middot; PM AI Toolkit</footer>
+</body>
+</html>

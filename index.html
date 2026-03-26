@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI for Project Managers - PM AI Toolkit</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--p:#2563eb;--pd:#1d4ed8;--ac:#7c3aed;--bg:#f8fafc;--card:#fff;--t:#1e293b;--tm:#64748b;--b:#e2e8f0;--g:#059669;--w:#d97706;--r:#dc2626;--teal:#0d9488}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--t);font-size:15px;line-height:1.6}
+  nav{background:#fff;border-bottom:1px solid var(--b);padding:12px 24px;position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between}
+  nav .logo{font-weight:800;font-size:1.1rem;color:var(--p);letter-spacing:-0.03em;text-decoration:none}
+  nav .nav-links{display:flex;gap:20px;list-style:none}
+  nav .nav-links a{text-decoration:none;color:var(--tm);font-size:13px;font-weight:500;transition:color 0.15s}
+  nav .nav-links a:hover{color:var(--p)}
+  .container{max-width:1100px;margin:0 auto;padding:0 24px}
+  .hero{text-align:center;padding:52px 24px 36px}
+  .hero .badge{display:inline-block;background:#eff6ff;color:var(--p);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:4px 14px;border-radius:20px;margin-bottom:14px}
+  .hero h1{font-size:2.3rem;font-weight:800;letter-spacing:-0.04em;line-height:1.15;margin-bottom:14px}
+  .hero h1 span{color:var(--p)}
+  .hero p{color:var(--tm);font-size:1.05rem;max-width:680px;margin:0 auto}
+  .hero .subtitle{font-size:14px;color:var(--p);font-weight:600;margin-top:10px}
+  section{padding:40px 0}
+  section h2{font-size:1.4rem;font-weight:700;letter-spacing:-0.03em;margin-bottom:6px}
+  .section-sub{color:var(--tm);margin-bottom:24px;font-size:14px}
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+  .card{background:var(--card);border:1px solid var(--b);border-radius:10px;padding:20px;transition:box-shadow 0.2s;text-decoration:none;color:inherit;display:block}
+  .card:hover{box-shadow:0 4px 20px rgba(0,0,0,0.06)}
+  .card .card-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px}
+  .card h3{font-size:0.95rem;font-weight:700;margin-bottom:4px;letter-spacing:-0.02em}
+  .card p{color:var(--tm);font-size:13px;line-height:1.5}
+  .card .arrow{color:var(--p);font-size:13px;font-weight:600;margin-top:8px;display:inline-block}
+  .tag{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;margin-top:6px;margin-right:4px}
+  .tag-init{background:#dbeafe;color:#1d4ed8}.tag-plan{background:#eff6ff;color:var(--p)}.tag-exec{background:#f0fdf4;color:var(--g)}.tag-mc{background:#fefce8;color:var(--w)}.tag-close{background:#f5f3ff;color:var(--ac)}
+
+  /* Executive Summary */
+  .exec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+  .exec-card{background:var(--card);border:1px solid var(--b);border-radius:10px;padding:18px;border-top:3px solid var(--p)}
+  .exec-card .exec-num{font-size:1.4rem;font-weight:800;color:var(--p);margin-bottom:4px}
+  .exec-card h3{font-size:0.85rem;font-weight:700;margin-bottom:6px}
+  .exec-card p{font-size:12px;color:var(--tm);line-height:1.45}
+  .callout{background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:16px 20px;font-size:14px;color:var(--pd);font-weight:500;line-height:1.5;margin-top:16px}
+
+  /* AI Team */
+  .team-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  .team-card{background:var(--card);border:1px solid var(--b);border-radius:10px;padding:16px;text-align:center;transition:box-shadow 0.2s}
+  .team-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.06)}
+  .team-card .team-icon{font-size:28px;margin-bottom:8px}
+  .team-card .team-role{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+  .team-card .team-tool{font-size:14px;font-weight:700;color:var(--t);margin-bottom:6px}
+  .team-card p{font-size:11px;color:var(--tm);line-height:1.4}
+  .team-card.exec{border-top:3px solid var(--p)}.team-card.exec .team-role{color:var(--p)}
+  .team-card.know{border-top:3px solid var(--g)}.team-card.know .team-role{color:var(--g)}
+  .team-card.res{border-top:3px solid var(--ac)}.team-card.res .team-role{color:var(--ac)}
+  .team-card.auto{border-top:3px solid var(--w)}.team-card.auto .team-role{color:var(--w)}
+  .team-card.build{border-top:3px solid var(--teal)}.team-card.build .team-role{color:var(--teal)}
+
+  /* Lifecycle */
+  .lifecycle{display:flex;gap:0;margin-bottom:8px;overflow-x:auto}
+  .lc-stage{flex:1;min-width:120px;text-align:center;padding:14px 8px;position:relative}
+  .lc-stage::after{content:'';position:absolute;right:0;top:30%;height:40%;width:2px;background:var(--b)}
+  .lc-stage:last-child::after{display:none}
+  .lc-stage .lc-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--p);margin-bottom:4px}
+  .lc-stage .lc-name{font-size:13px;font-weight:700;color:var(--t);margin-bottom:4px}
+  .lc-stage .lc-ai{font-size:11px;color:var(--tm);line-height:1.35}
+  .lc-bar{display:flex;height:6px;border-radius:3px;overflow:hidden;margin-bottom:20px}
+  .lc-bar div{flex:1}
+  .lc-bar .b1{background:#93c5fd}.lc-bar .b2{background:#60a5fa}.lc-bar .b3{background:#3b82f6}.lc-bar .b4{background:#2563eb}.lc-bar .b5{background:#1d4ed8}.lc-bar .b6{background:#1e40af}.lc-bar .b7{background:#7c3aed}
+
+  /* Deep Dives */
+  .dd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .dd-card{background:var(--card);border:1px solid var(--b);border-radius:10px;padding:18px;text-decoration:none;color:inherit;display:block;transition:box-shadow 0.2s}
+  .dd-card:hover{box-shadow:0 4px 20px rgba(0,0,0,0.06)}
+  .dd-card .dd-num{font-size:11px;font-weight:800;color:var(--p);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px}
+  .dd-card h3{font-size:0.9rem;font-weight:700;margin-bottom:6px}
+  .dd-card p{font-size:12px;color:var(--tm);line-height:1.45}
+  .dd-card .arrow{color:var(--p);font-size:12px;font-weight:600;margin-top:8px;display:inline-block}
+
+  /* PMI Framework */
+  .pmi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:24px}
+  .pmi-card{background:var(--card);border:1px solid var(--b);border-radius:10px;padding:14px;text-align:center;transition:box-shadow 0.2s}
+  .pmi-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.06)}
+  .pmi-card .pmi-num{font-size:1.6rem;font-weight:800;color:var(--p);line-height:1}
+  .pmi-card h3{font-size:0.8rem;font-weight:700;margin:6px 0 3px}
+  .pmi-card p{font-size:10px;color:var(--tm);line-height:1.35}
+  .pmi-card .pmi-subs{list-style:none;text-align:left;margin-top:8px;padding-top:8px;border-top:1px solid var(--b)}
+  .pmi-card .pmi-subs li{font-size:10px;color:var(--tm);padding:2px 0 2px 12px;position:relative;line-height:1.4}
+  .pmi-card .pmi-subs li::before{content:'';position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--p);opacity:0.35}
+  .ka-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .ka-item{background:var(--card);border:1px solid var(--b);border-radius:8px;padding:14px;text-align:left;font-size:12px;font-weight:600;color:var(--t);transition:box-shadow 0.2s}
+  .ka-item:hover{box-shadow:0 4px 16px rgba(0,0,0,0.06)}
+  .ka-item .ka-header{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+  .ka-item .ka-icon{font-size:20px}
+  .ka-item .ka-subs{list-style:none;margin-top:6px;padding-top:6px;border-top:1px solid var(--b)}
+  .ka-item .ka-subs li{font-size:10px;color:var(--tm);font-weight:400;padding:2px 0 2px 12px;position:relative;line-height:1.4}
+  .ka-item .ka-subs li::before{content:'';position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--g);opacity:0.35}
+
+  /* Roadmap */
+  .roadmap{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .phase-card{background:var(--card);border:1px solid var(--b);border-radius:10px;padding:18px}
+  .phase-card .phase-num{font-size:11px;font-weight:800;color:var(--p);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px}
+  .phase-card h3{font-size:0.9rem;font-weight:700;margin-bottom:8px}
+  .phase-card ul{list-style:none;font-size:12px;color:var(--tm)}
+  .phase-card ul li{padding:3px 0 3px 14px;position:relative}
+  .phase-card ul li::before{content:'';position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:var(--p);opacity:0.4}
+  .phase-card .timeline{margin-top:10px;font-size:11px;font-weight:600;color:var(--p)}
+
+  /* Tool category links */
+  .cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
+  footer{text-align:center;padding:28px 24px;color:var(--tm);font-size:13px;border-top:1px solid var(--b);margin-top:28px}
+
+  @media(max-width:768px){
+    .hero h1{font-size:1.7rem}.exec-grid{grid-template-columns:1fr}.team-grid{grid-template-columns:repeat(3,1fr)}
+    .dd-grid,.cat-grid{grid-template-columns:1fr 1fr}.pmi-grid{grid-template-columns:repeat(3,1fr)}.roadmap{grid-template-columns:1fr}
+    .lifecycle{flex-wrap:wrap}.lc-stage{min-width:45%}.lc-stage::after{display:none}
+  }
+  @media(max-width:480px){.team-grid,.dd-grid,.cat-grid{grid-template-columns:1fr 1fr}.ka-grid{grid-template-columns:1fr}.pmi-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">PM AI Toolkit</a>
+  <ul class="nav-links">
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#team">AI Team</a></li>
+    <li><a href="#lifecycle">Lifecycle</a></li>
+    <li><a href="#deepdives">Deep Dives</a></li>
+    <li><a href="#pmi">PMI</a></li>
+    <li><a href="#categories">By Category</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <span class="badge">AI for Project Managers</span>
+  <h1>Leverage <span>AI</span> Across the<br>Project Lifecycle</h1>
+  <p>A refined executive view of where AI creates leverage across the product project lifecycle. Not "more AI tools" &mdash; a cleaner PM operating model built around synthesis, communication, and faster decision support.</p>
+  <div class="subtitle">Feb 2026 &middot; PM Group</div>
+</div>
+
+<div class="container">
+
+<!-- ═══════ EXECUTIVE SUMMARY ═══════ -->
+<section id="summary">
+  <h2>Executive Summary</h2>
+  <p class="section-sub">AI is already part of daily PM work. The focus now is where it saves the most time.</p>
+
+  <div class="exec-grid">
+    <div class="exec-card">
+      <div class="exec-num">1</div>
+      <h3>Adoption is Real</h3>
+      <p>PMs are already using AI in daily work. The focus now is where it saves the most time. Start small, focus on real pain points.</p>
+    </div>
+    <div class="exec-card">
+      <div class="exec-num">2</div>
+      <h3>Need is Practical</h3>
+      <p>The biggest value is in routine PM tasks. Meeting notes, updates, drafting, and synthesis benefit most. Research, communication, and execution support are top priorities.</p>
+    </div>
+    <div class="exec-card">
+      <div class="exec-num">3</div>
+      <h3>Barriers are Real</h3>
+      <p>Accuracy, data security, and skill gap are the main brakes on broader adoption. Governance and trust-building are essential for scaling.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Recommendation:</strong> To elevate PM capability, build a <strong>virtual AI team</strong> &mdash; a "one-person company" model where AI agents support you across research, synthesis, communication, and execution.
+  </div>
+</section>
+
+<!-- ═══════ BUILD YOUR AI TEAM ═══════ -->
+<section id="team">
+  <h2>Build Your AI Team</h2>
+  <p class="section-sub">The strongest PMs in the AI era won't be the busiest people in the room &mdash; they'll be the ones who design the best working system around them.</p>
+
+  <div class="team-grid">
+    <div class="team-card exec">
+      <div class="team-icon">&#9889;</div>
+      <div class="team-role">Execution</div>
+      <div class="team-tool">LogiQ</div>
+      <p>Daily drafting, analysis, coding support</p>
+    </div>
+    <div class="team-card know">
+      <div class="team-icon">&#128218;</div>
+      <div class="team-role">Knowledge</div>
+      <div class="team-tool">NotebookLM</div>
+      <p>Enterprise search, synthesis, grounded summaries, deck building</p>
+    </div>
+    <div class="team-card res">
+      <div class="team-icon">&#128270;</div>
+      <div class="team-role">Research</div>
+      <div class="team-tool">Gemini / Nano Banana</div>
+      <p>Deep research, ideation, visual exploration</p>
+    </div>
+    <div class="team-card auto">
+      <div class="team-icon">&#128296;</div>
+      <div class="team-role">Automation</div>
+      <div class="team-tool">Workspace Studio</div>
+      <p>Workflow orchestration and daily status flows</p>
+    </div>
+    <div class="team-card build">
+      <div class="team-icon">&#128187;</div>
+      <div class="team-role">Build</div>
+      <div class="team-tool">Claude Code</div>
+      <p>Rapid prototyping, landing pages, utilities, MVP</p>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:16px">
+    The PM role shifts from <strong>manager</strong> to <strong>orchestrator</strong> of people, AI, and workflows.
+    <a href="ai-team.html" style="color:var(--pd);font-weight:700;margin-left:8px">Full details &rarr;</a>
+  </div>
+</section>
+
+<!-- ═══════ AI ACROSS THE LIFECYCLE ═══════ -->
+<section id="lifecycle">
+  <h2>AI Across the Project Lifecycle</h2>
+  <p class="section-sub">AI adds the most value when it reduces manual synthesis, improves communication clarity, and helps PMs prepare better decisions at each milestone.</p>
+
+  <div class="lc-bar"><div class="b1"></div><div class="b2"></div><div class="b3"></div><div class="b4"></div><div class="b5"></div><div class="b6"></div><div class="b7"></div></div>
+
+  <div class="lifecycle">
+    <div class="lc-stage"><div class="lc-label">F</div><div class="lc-name">Framing</div><div class="lc-ai">Market research<br>Pain-point synthesis</div></div>
+    <div class="lc-stage"><div class="lc-label">V</div><div class="lc-name">Vision</div><div class="lc-ai">Concepts, scope<br>Design thinking</div></div>
+    <div class="lc-stage"><div class="lc-label">Gate 0</div><div class="lc-name">Feasibility</div><div class="lc-ai">Risk &amp; plan draft<br>Cost estimation</div></div>
+    <div class="lc-stage"><div class="lc-label">Gate 1</div><div class="lc-name">Refine</div><div class="lc-ai">Risk mitigation<br>Problem-solving</div></div>
+    <div class="lc-stage"><div class="lc-label">Gate 2</div><div class="lc-name">Execute</div><div class="lc-ai">Status tracking<br>Issue synthesis</div></div>
+    <div class="lc-stage"><div class="lc-label">Gate X</div><div class="lc-name">Launch</div><div class="lc-ai">Deck visuals<br>Launch comms</div></div>
+    <div class="lc-stage"><div class="lc-label">Post MP</div><div class="lc-name">PCR / Learn</div><div class="lc-ai">Lessons learned<br>Knowledge reuse</div></div>
+  </div>
+
+  <div class="callout" style="margin-top:12px">
+    <strong>Operating principle:</strong> Use AI as a milestone copilot &mdash; strongest in discovery, synthesis, reporting, and explanation; weaker where judgment, trade-offs, or sensitive decisions dominate.
+    <a href="lifecycle.html" style="color:var(--pd);font-weight:700;margin-left:8px">Full lifecycle detail &rarr;</a>
+  </div>
+</section>
+
+<!-- ═══════ DEEP DIVES ═══════ -->
+<section id="deepdives">
+  <h2>Practical Use Cases &mdash; Deep Dives</h2>
+  <p class="section-sub">Prioritized by frequency, PM leverage, and reviewability by management.</p>
+
+  <div class="dd-grid">
+    <a class="dd-card" href="deep-dive-pcr.html">
+      <div class="dd-num">Deep Dive 1</div>
+      <h3>PCR &amp; Lessons-Learned Assistant</h3>
+      <p>Source-grounded post-mortem workflow. Gather project docs, synthesize with NotebookLM, generate PCR narrative automatically.</p>
+      <div class="arrow">Steps &amp; workflow &rarr;</div>
+    </a>
+    <a class="dd-card" href="deep-dive-status.html">
+      <div class="dd-num">Deep Dive 2</div>
+      <h3>Automated Status Updates</h3>
+      <p>Use Workspace Studio to auto-generate daily/weekly project status summaries. Less manual chasing, faster morning alignment.</p>
+      <div class="arrow">Steps &amp; workflow &rarr;</div>
+    </a>
+    <a class="dd-card" href="deep-dive-cost.html">
+      <div class="dd-num">Deep Dive 3</div>
+      <h3>Product Cost Landing Page</h3>
+      <p>Web-based cost estimator: upload a cost template, generate a PM-friendly interface for estimation and scenario review.</p>
+      <div class="arrow">Steps &amp; workflow &rarr;</div>
+    </a>
+    <a class="dd-card" href="deep-dive-visuals.html">
+      <div class="dd-num">Deep Dive 4</div>
+      <h3>Milestone Visuals with AI</h3>
+      <p>Use AI-generated images to explain product issues clearly in milestone decks. Side-by-side comparisons for root-cause storytelling.</p>
+      <div class="arrow">Steps &amp; workflow &rarr;</div>
+    </a>
+    <a class="dd-card" href="deep-dive-voc.html">
+      <div class="dd-num">Deep Dive 5</div>
+      <h3>Voice-of-Customer Research</h3>
+      <p>Turn scattered public feedback into structured design input. Deep search for pain points and expectations in the Vision phase.</p>
+      <div class="arrow">Steps &amp; workflow &rarr;</div>
+    </a>
+    <a class="dd-card" href="deep-dive-vibe.html">
+      <div class="dd-num">Deep Dive 6</div>
+      <h3>Vibe Coding &amp; Rapid MVP</h3>
+      <p>PMs build tools, dashboards, and landing pages directly with AI coding assistants. From idea to working prototype in hours.</p>
+      <div class="arrow">Steps &amp; workflow &rarr;</div>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════ PMI FRAMEWORK ═══════ -->
+<section id="pmi">
+  <h2>PMI Framework Reference</h2>
+  <p class="section-sub">All use cases map back to PMI's 5 Process Groups and 10 Knowledge Areas (PMBOK 7th Edition).</p>
+
+  <h3 style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--p);margin-bottom:10px">5 Process Groups</h3>
+  <div class="pmi-grid">
+    <div class="pmi-card">
+      <div class="pmi-num">1</div>
+      <h3>Initiating</h3>
+      <p>Define project, authorization, stakeholders</p>
+      <ul class="pmi-subs">
+        <li>Develop Project Charter</li>
+        <li>Identify Stakeholders</li>
+        <li>Define high-level scope &amp; objectives</li>
+        <li>Assign Project Manager</li>
+        <li>Determine initial risks &amp; assumptions</li>
+        <li>Secure project funding &amp; approval</li>
+      </ul>
+    </div>
+    <div class="pmi-card">
+      <div class="pmi-num">2</div>
+      <h3>Planning</h3>
+      <p>Scope, schedule, cost, quality, risks</p>
+      <ul class="pmi-subs">
+        <li>Develop Project Management Plan</li>
+        <li>Plan Scope &amp; Collect Requirements</li>
+        <li>Create WBS (Work Breakdown Structure)</li>
+        <li>Define Activities &amp; Sequence them</li>
+        <li>Estimate Durations &amp; Costs</li>
+        <li>Develop Schedule &amp; Budget</li>
+        <li>Plan Quality, Resources, Communications</li>
+        <li>Plan Risk Management &amp; Identify Risks</li>
+        <li>Plan Procurement &amp; Stakeholder Engagement</li>
+      </ul>
+    </div>
+    <div class="pmi-card">
+      <div class="pmi-num">3</div>
+      <h3>Executing</h3>
+      <p>Coordinate people, resources, comms</p>
+      <ul class="pmi-subs">
+        <li>Direct &amp; Manage Project Work</li>
+        <li>Manage Project Knowledge</li>
+        <li>Manage Quality Assurance</li>
+        <li>Acquire, Develop &amp; Manage Team</li>
+        <li>Manage Communications</li>
+        <li>Conduct Procurements</li>
+        <li>Manage Stakeholder Engagement</li>
+        <li>Implement Risk Responses</li>
+      </ul>
+    </div>
+    <div class="pmi-card">
+      <div class="pmi-num">4</div>
+      <h3>Monitoring &amp; Controlling</h3>
+      <p>Track, review, regulate performance</p>
+      <ul class="pmi-subs">
+        <li>Monitor &amp; Control Project Work</li>
+        <li>Perform Integrated Change Control</li>
+        <li>Validate &amp; Control Scope</li>
+        <li>Control Schedule &amp; Costs</li>
+        <li>Control Quality</li>
+        <li>Monitor Communications &amp; Risks</li>
+        <li>Control Procurements</li>
+        <li>Monitor Stakeholder Engagement</li>
+        <li>Earned Value Analysis (EVM)</li>
+      </ul>
+    </div>
+    <div class="pmi-card">
+      <div class="pmi-num">5</div>
+      <h3>Closing</h3>
+      <p>Finalize activities, lessons learned</p>
+      <ul class="pmi-subs">
+        <li>Close Project or Phase</li>
+        <li>Transfer Deliverables to Operations</li>
+        <li>Release Project Resources</li>
+        <li>Document Lessons Learned</li>
+        <li>Archive Project Documents</li>
+        <li>Obtain Final Acceptance &amp; Sign-off</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--p);margin-bottom:10px">10 Knowledge Areas</h3>
+  <div class="ka-grid">
+    <div class="ka-item">
+      <div class="ka-header"><span class="ka-icon">&#128736;</span> Integration Management</div>
+      <ul class="ka-subs">
+        <li>Develop Project Charter</li>
+        <li>Develop Project Management Plan</li>
+        <li>Direct &amp; Manage Project Work</li>
+        <li>Manage Project Knowledge</li>
+        <li>Monitor &amp; Control Project Work</li>
+        <li>Perform Integrated Change Control</li>
+        <li>Close Project or Phase</li>
+      </ul>
+    </div>
+    <div class="ka-item">
+      <div class="ka-header"><span class="ka-icon">&#127919;</span> Scope Management</div>
+      <ul class="ka-subs">
+        <li>Plan Scope Management</li>
+        <li>Collect Requirements</li>
+        <li>Define Scope</li>
+        <li>Create WBS</li>
+        <li>Validate Scope</li>
+        <li>Control Scope</li>
+      </ul>
+    </div>
+    <div class="ka-item">
+      <div class="ka-header"><span class="ka-icon">&#128197;</span> Schedule Management</div>
+      <ul class="ka-subs">
+        <li>Plan Schedule Management</li>
+        <li>Define Activities</li>
+        <li>Sequence Activities</li>
+        <li>Estimate Activity Durations</li>
+        <li>Develop Schedule</li>
+        <li>Control Schedule</li>
+      </ul>
+    </div>
+    <div class="ka-item">
+      <div class="ka-header"><span class="ka-icon">&#128176;</span> Cost Management</div>
+      <ul class="ka-subs">
+        <li>Plan Cost Management</li>
+        <li>Estimate Costs</li>
+        <li>Determine Budget</li>
+        <li>Control Costs</li>
+        <li>Earned Value Management (EVM)</li>
+      </ul>
+    </div>
+    <div class="ka-item">
+      <div class="ka-header"><span class="ka-icon">&#9989;</span> Quality Management</div>
+      <ul class="ka-subs">
+        <li>Plan Quality Management</li>
+        <li>Manage Quality (QA)</li>
+        <li>Control Quality (QC)</li>
+        <li>Quality Audits &amp; Inspections</li>
+        <li>Continuous Improvement</li>
+      </ul>
+    </div>
+    <div class="ka-item">
+      <div class="ka-header"><span class="ka-icon">&#128101;</span> Resource Management</div>
+      <ul class="ka-subs">
+        <li>Plan Resource Management</li>
+        <li>Estimate Activity Resources</li>
+        <li>Acquire Resources</li>
+        <li>Develop Team</li>
+        <li>Manage Team</li>
+        <li>Control Resources</li>
+      </ul>
+    </div>
+    <div class="ka-item">
+      <div class="ka-header"><span class="ka-icon">&#128172;</span> Communications Management</div>
+      <ul class="ka-subs">
+        <li>Plan Communications Management</li>
+        <li>Manage Communications</li>
+        <li>Monitor Communications</li>
+        <li>Stakeholder Reporting</li>
+        <li>Meeting &amp; Status Cadence</li>
+      </ul>
+    </div>
+    <div class="ka-item">
+      <div class="ka-header"><span class="ka-icon">&#9888;</span> Risk Management</div>
+      <ul class="ka-subs">
+        <li>Plan Risk Management</li>
+        <li>Identify Risks</li>
+        <li>Qualitative Risk Analysis</li>
+        <li>Quantitative Risk Analysis</li>
+        <li>Plan Risk Responses</li>
+        <li>Implement Risk Responses</li>
+        <li>Monitor Risks</li>
+      </ul>
+    </div>
+    <div class="ka-item">
+      <div class="ka-header"><span class="ka-icon">&#128230;</span> Procurement Management</div>
+      <ul class="ka-subs">
+        <li>Plan Procurement Management</li>
+        <li>Conduct Procurements</li>
+        <li>Control Procurements</li>
+        <li>Vendor Selection &amp; Evaluation</li>
+        <li>Contract Administration &amp; Closure</li>
+      </ul>
+    </div>
+    <div class="ka-item">
+      <div class="ka-header"><span class="ka-icon">&#129309;</span> Stakeholder Management</div>
+      <ul class="ka-subs">
+        <li>Identify Stakeholders</li>
+        <li>Plan Stakeholder Engagement</li>
+        <li>Manage Stakeholder Engagement</li>
+        <li>Monitor Stakeholder Engagement</li>
+        <li>Power/Interest Grid Analysis</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ BY CATEGORY ═══════ -->
+<section id="categories">
+  <h2>AI Tools by PM Discipline</h2>
+  <p class="section-sub">Detailed 5-step guides, top 5 use cases, and tool comparisons for each PM discipline.</p>
+  <div class="cat-grid">
+    <a class="card" href="planning-scheduling.html"><div class="card-icon" style="background:#eff6ff">&#128197;</div><h3>Planning &amp; Scheduling</h3><p>WBS, estimation, critical path, resource leveling, sprint velocity</p><div class="arrow">5 steps + 5 use cases &rarr;</div></a>
+    <a class="card" href="communication.html"><div class="card-icon" style="background:#f0fdf4">&#128172;</div><h3>Meeting &amp; Communication</h3><p>Transcription, action items, stakeholder updates, retro synthesis</p><div class="arrow">5 steps + 5 use cases &rarr;</div></a>
+    <a class="card" href="documentation.html"><div class="card-icon" style="background:#fefce8">&#128221;</div><h3>Documentation &amp; Reporting</h3><p>Charters, status reports, risk registers, change logs, lessons learned</p><div class="arrow">5 steps + 5 use cases &rarr;</div></a>
+    <a class="card" href="risk-analytics.html"><div class="card-icon" style="background:#f5f3ff">&#128200;</div><h3>Risk &amp; Analytics</h3><p>Risk identification, Monte Carlo, earned value, bottleneck detection</p><div class="arrow">5 steps + 5 use cases &rarr;</div></a>
+    <a class="card" href="automation.html"><div class="card-icon" style="background:#fef2f2">&#9889;</div><h3>Workflow Automation</h3><p>Task routing, escalations, cross-tool sync, approval workflows</p><div class="arrow">5 steps + 5 use cases &rarr;</div></a>
+    <a class="card" href="technical-pm.html"><div class="card-icon" style="background:#eff6ff">&#129302;</div><h3>Technical PM &amp; Dev Assistants</h3><p>PR review, story points, test plans, bug triage, velocity prediction</p><div class="arrow">5 steps + 5 use cases &rarr;</div></a>
+  </div>
+</section>
+
+<!-- ═══════ 90-DAY ROADMAP ═══════ -->
+<section id="roadmap">
+  <h2>90-Day Pilot Roadmap</h2>
+  <p class="section-sub">A focused pilot creates the evidence base for broader adoption. Move from isolated demos to a PM operating system.</p>
+  <div class="roadmap">
+    <div class="phase-card">
+      <div class="phase-num">0 - 30 Days</div>
+      <h3>Quick Wins &amp; MVPs</h3>
+      <ul>
+        <li>Meeting auto-update study for project group</li>
+        <li>Product Cost MVP (web-based estimator)</li>
+        <li>AI-generated status report pilot</li>
+        <li>Set up AI team tools (LogiQ, NotebookLM, Gemini)</li>
+      </ul>
+      <div class="timeline">Immediate impact</div>
+    </div>
+    <div class="phase-card">
+      <div class="phase-num">31 - 60 Days</div>
+      <h3>Integration &amp; Expansion</h3>
+      <ul>
+        <li>New project AI management pilot (Nusa)</li>
+        <li>Gemini enterprise agent use-case deep study</li>
+        <li>PCR automation workflow for active projects</li>
+        <li>VOC deep research for Vision phase</li>
+      </ul>
+      <div class="timeline">Prove value at scale</div>
+    </div>
+    <div class="phase-card">
+      <div class="phase-num">61 - 90 Days</div>
+      <h3>Standardize &amp; Share</h3>
+      <ul>
+        <li>Agents for enterprise search</li>
+        <li>Decide which flows to standardize</li>
+        <li>Share examples with PM community</li>
+        <li>Build PM landing page MVP / dashboards</li>
+      </ul>
+      <div class="timeline">Operational maturity</div>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:14px">
+    <strong>Beyond 90 days:</strong> Claude cowork integrations (Karajan, Tableau, Oracle), custom secure workflows, OpenClaw exploration, PM community knowledge sharing.
+  </div>
+</section>
+
+</div>
+
+<footer>PM AI Toolkit &mdash; Aligned to PMBOK 7th Edition &amp; Product Development Lifecycle</footer>
+</body>
+</html>

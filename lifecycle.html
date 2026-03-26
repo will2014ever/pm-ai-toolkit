@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Across the Project Lifecycle - PM AI Toolkit</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--p:#2563eb;--pd:#1d4ed8;--ac:#7c3aed;--bg:#f8fafc;--card:#fff;--t:#1e293b;--tm:#64748b;--b:#e2e8f0;--g:#059669;--w:#d97706;--teal:#0d9488}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--t);font-size:15px;line-height:1.6}
+  nav{background:#fff;border-bottom:1px solid var(--b);padding:12px 24px;position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:16px}
+  nav a{text-decoration:none;color:var(--tm);font-size:14px;font-weight:500}.nav-back{color:var(--p);font-weight:700}
+  .container{max-width:900px;margin:0 auto;padding:0 24px}
+  .hero{padding:48px 0 32px}
+  .hero .badge{display:inline-block;background:#eff6ff;color:var(--p);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:3px 12px;border-radius:20px;margin-bottom:12px}
+  .hero h1{font-size:2rem;font-weight:800;letter-spacing:-0.04em;margin-bottom:10px}
+  .hero p{color:var(--tm);font-size:1rem;max-width:700px}
+  section{padding:36px 0}section h2{font-size:1.3rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:6px}
+  .section-sub{color:var(--tm);margin-bottom:20px;font-size:14px}
+  .callout{background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:14px 18px;font-size:13px;color:var(--pd);font-weight:500;line-height:1.5;margin:16px 0}
+
+  .stage{background:var(--card);border:1px solid var(--b);border-radius:12px;margin-bottom:14px;overflow:hidden}
+  .stage-header{display:flex;align-items:center;gap:16px;padding:18px 20px;cursor:default}
+  .stage-header .s-badge{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;padding:4px 12px;border-radius:6px;flex-shrink:0}
+  .stage-header h3{font-size:1rem;font-weight:700;flex:1}
+  .stage-header .s-focus{font-size:12px;color:var(--tm);font-weight:500}
+  .stage-body{padding:0 20px 20px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .stage-body .col h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--p);margin-bottom:8px}
+  .stage-body ul{list-style:none;font-size:13px;color:var(--tm)}
+  .stage-body ul li{padding:3px 0 3px 16px;position:relative;line-height:1.45}
+  .stage-body ul li::before{content:'';position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:var(--p);opacity:0.4}
+  .stage-body .output{margin-top:10px;background:#f8fafc;border:1px solid var(--b);border-radius:6px;padding:10px 12px;font-size:12px}
+  .stage-body .output strong{color:var(--t)}
+
+  .s1 .s-badge{background:#dbeafe;color:#1d4ed8}
+  .s2 .s-badge{background:#e0e7ff;color:#4338ca}
+  .s3 .s-badge{background:#dbeafe;color:#1d4ed8}
+  .s4 .s-badge{background:#d1fae5;color:#065f46}
+  .s5 .s-badge{background:#fef3c7;color:#92400e}
+  .s6 .s-badge{background:#fce7f3;color:#9d174d}
+  .s7 .s-badge{background:#f3e8ff;color:#6b21a8}
+
+  .pmi-map{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--b);border-radius:10px;overflow:hidden;font-size:12px;margin-top:16px}
+  .pmi-map th{background:#f1f5f9;text-align:left;padding:8px 12px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--tm);border-bottom:1px solid var(--b)}
+  .pmi-map td{padding:8px 12px;border-bottom:1px solid var(--b);vertical-align:top}
+  .pmi-map tr:last-child td{border-bottom:none}
+  .bold{font-weight:700;color:var(--t)}
+
+  footer{text-align:center;padding:32px 24px;color:var(--tm);font-size:13px;border-top:1px solid var(--b);margin-top:32px}
+  @media(max-width:600px){.stage-body{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav><a class="nav-back" href="index.html">&larr; Back</a><a href="index.html">PM AI Toolkit</a></nav>
+
+<div class="container">
+
+<div class="hero">
+  <span class="badge">Project Lifecycle</span>
+  <h1>AI Across the Project Lifecycle</h1>
+  <p>AI adds the most value when it reduces manual synthesis work, improves communication clarity, and helps PMs prepare better decisions at each gate milestone.</p>
+</div>
+
+<div class="callout">
+  <strong>Operating principle:</strong> Use AI as a milestone copilot &mdash; strongest in discovery, synthesis, reporting, and explanation; weaker where judgment, trade-offs, or sensitive decisions dominate. Treat AI as companion, not replacement.
+</div>
+
+<section>
+  <h2>Gate-by-Gate Breakdown</h2>
+  <p class="section-sub">Each stage shows the PM focus, AI applications, recommended tools, and example outputs.</p>
+
+  <div class="stage s1">
+    <div class="stage-header"><span class="s-badge">F &middot; Framing</span><h3>Identify Opportunity</h3><span class="s-focus">Discovery &amp; research</span></div>
+    <div class="stage-body">
+      <div class="col">
+        <h4>AI Usage</h4>
+        <ul>
+          <li>Competitor scanning and benchmarking</li>
+          <li>Review mining from public sources (Amazon, Reddit, forums)</li>
+          <li>Pain-point synthesis and clustering</li>
+          <li>Market trend identification</li>
+          <li>User expectation mapping from prior products</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>Recommended AI Agent</h4>
+        <ul>
+          <li><strong>Gemini Deep Research</strong> &mdash; broad web search + synthesis</li>
+          <li><strong>LogiQ</strong> &mdash; summarize and structure findings</li>
+        </ul>
+        <div class="output"><strong>Example output:</strong> Insight brief with top 10 pain points, competitor comparison table, and market opportunity summary.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage s2">
+    <div class="stage-header"><span class="s-badge">V &middot; Vision</span><h3>Define Concept &amp; Scope</h3><span class="s-focus">Ideation &amp; scoping</span></div>
+    <div class="stage-body">
+      <div class="col">
+        <h4>AI Usage</h4>
+        <ul>
+          <li>Brainstorming and concept ideation</li>
+          <li>Prior-project learning (what worked / what didn't)</li>
+          <li>Early cost thinking and feasibility signals</li>
+          <li>Design-thinking synthesis</li>
+          <li>VOC deep research for design framing</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>Recommended AI Agent</h4>
+        <ul>
+          <li><strong>Gemini / Nano Banana</strong> &mdash; ideation + visual exploration</li>
+          <li><strong>NotebookLM</strong> &mdash; grounded synthesis from prior project docs</li>
+        </ul>
+        <div class="output"><strong>Example output:</strong> Concept brief with feature priorities, design trade-offs, and initial cost range estimate.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage s3">
+    <div class="stage-header"><span class="s-badge">Gate 0</span><h3>Validate Feasibility</h3><span class="s-focus">Planning &amp; preparation</span></div>
+    <div class="stage-body">
+      <div class="col">
+        <h4>AI Usage</h4>
+        <ul>
+          <li>Feasibility summary generation</li>
+          <li>Early risk identification and scoring</li>
+          <li>Cost estimation and scenario modeling</li>
+          <li>Schedule draft with WBS generation</li>
+          <li>Gate 0 preparation pack assembly</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>Recommended AI Agent</h4>
+        <ul>
+          <li><strong>LogiQ</strong> &mdash; risk register, cost analysis</li>
+          <li><strong>Claude Code</strong> &mdash; cost calculator MVP</li>
+          <li><strong>NotebookLM</strong> &mdash; grounded feasibility summary</li>
+        </ul>
+        <div class="output"><strong>Example output:</strong> Gate 0 prep pack with feasibility summary, initial risk register, cost breakdown, and draft schedule.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage s4">
+    <div class="stage-header"><span class="s-badge">Gate 1</span><h3>Refine &amp; Commit</h3><span class="s-focus">Risk mitigation &amp; problem-solving</span></div>
+    <div class="stage-body">
+      <div class="col">
+        <h4>AI Usage</h4>
+        <ul>
+          <li>Risk register update and mitigation planning</li>
+          <li>Problem-solving support (root cause analysis)</li>
+          <li>Updated execution plan generation</li>
+          <li>Design trade-off analysis</li>
+          <li>Vendor/supplier comparison synthesis</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>Recommended AI Agent</h4>
+        <ul>
+          <li><strong>LogiQ</strong> &mdash; risk mitigation, trade-off analysis</li>
+          <li><strong>NotebookLM</strong> &mdash; prior-project risk patterns</li>
+        </ul>
+        <div class="output"><strong>Example output:</strong> Updated execution plan with refined risk register, mitigation actions, and decision log.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage s5">
+    <div class="stage-header"><span class="s-badge">Gate 2</span><h3>Drive Execution</h3><span class="s-focus">Status tracking &amp; issue management</span></div>
+    <div class="stage-body">
+      <div class="col">
+        <h4>AI Usage</h4>
+        <ul>
+          <li>Status automation (daily/weekly summaries)</li>
+          <li>Issue synthesis and prioritization</li>
+          <li>QA summary generation</li>
+          <li>Meeting minutes with action-item extraction</li>
+          <li>Cross-functional alignment communications</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>Recommended AI Agent</h4>
+        <ul>
+          <li><strong>Workspace Studio</strong> &mdash; automated status flows</li>
+          <li><strong>LogiQ</strong> &mdash; issue synthesis, meeting summaries</li>
+        </ul>
+        <div class="output"><strong>Example output:</strong> Weekly project summary with RAG status, key issues, action items, and next-week priorities.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage s6">
+    <div class="stage-header"><span class="s-badge">Gate X</span><h3>Support Launch</h3><span class="s-focus">Communication &amp; visualization</span></div>
+    <div class="stage-body">
+      <div class="col">
+        <h4>AI Usage</h4>
+        <ul>
+          <li>Milestone deck enhancement and visual explanations</li>
+          <li>Technical issue visualization (side-by-side comparisons)</li>
+          <li>Launch communication drafting</li>
+          <li>Go/no-go decision support materials</li>
+          <li>Stakeholder alignment decks</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>Recommended AI Agent</h4>
+        <ul>
+          <li><strong>Nano Banana</strong> &mdash; visual explanations and comparisons</li>
+          <li><strong>LogiQ</strong> &mdash; launch comms, decision summaries</li>
+        </ul>
+        <div class="output"><strong>Example output:</strong> Launch-ready deck with visual issue explanations and stakeholder-aligned messaging.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage s7">
+    <div class="stage-header"><span class="s-badge">Post MP</span><h3>PCR &amp; Learn</h3><span class="s-focus">Knowledge capture &amp; reuse</span></div>
+    <div class="stage-body">
+      <div class="col">
+        <h4>AI Usage</h4>
+        <ul>
+          <li>PCR summary and narrative generation</li>
+          <li>Retrospective synthesis from all project docs</li>
+          <li>Lessons-learned extraction and categorization</li>
+          <li>Timeline reconstruction from artifacts</li>
+          <li>Knowledge reuse recommendations for future projects</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>Recommended AI Agent</h4>
+        <ul>
+          <li><strong>NotebookLM</strong> &mdash; source-grounded synthesis from all project docs</li>
+          <li><strong>LogiQ</strong> &mdash; narrative drafting and formatting</li>
+        </ul>
+        <div class="output"><strong>Example output:</strong> Lessons-learned report with timeline, root causes, and actionable recommendations for future projects.</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section>
+  <h2>Lifecycle &times; PMI Knowledge Area Map</h2>
+  <p class="section-sub">Which PMI knowledge areas are most relevant at each stage, and where AI assists.</p>
+  <table class="pmi-map">
+    <thead><tr><th>Stage</th><th>Primary Knowledge Areas</th><th>PMI Process Group</th><th>AI Strength Level</th></tr></thead>
+    <tbody>
+      <tr><td class="bold">Framing</td><td>Scope, Stakeholder, Integration</td><td>Initiating</td><td>High &mdash; research &amp; synthesis</td></tr>
+      <tr><td class="bold">Vision</td><td>Scope, Stakeholder, Cost</td><td>Initiating / Planning</td><td>High &mdash; ideation &amp; analysis</td></tr>
+      <tr><td class="bold">Gate 0</td><td>Cost, Schedule, Risk, Scope</td><td>Planning</td><td>High &mdash; estimation &amp; drafting</td></tr>
+      <tr><td class="bold">Gate 1</td><td>Risk, Quality, Procurement</td><td>Planning / Executing</td><td>Medium &mdash; judgment still key</td></tr>
+      <tr><td class="bold">Gate 2</td><td>Schedule, Cost, Communications, Quality</td><td>Executing / M&amp;C</td><td>High &mdash; status &amp; synthesis</td></tr>
+      <tr><td class="bold">Gate X</td><td>Communications, Stakeholder, Quality</td><td>Executing / Closing</td><td>Medium &mdash; visual + comms</td></tr>
+      <tr><td class="bold">Post MP</td><td>Integration, Quality, Communications</td><td>Closing</td><td>High &mdash; lessons &amp; knowledge</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</div>
+<footer><a href="index.html" style="color:var(--p);text-decoration:none;font-weight:600">&larr; Back to Home</a> &middot; PM AI Toolkit</footer>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Planning &amp; Scheduling - AI+PM</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--p:#2563eb;--pd:#1d4ed8;--ac:#7c3aed;--bg:#f8fafc;--card:#fff;--t:#1e293b;--tm:#64748b;--b:#e2e8f0;--g:#059669;--w:#d97706}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--t);font-size:15px;line-height:1.6}
+  nav{background:#fff;border-bottom:1px solid var(--b);padding:12px 24px;position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:16px}
+  nav a{text-decoration:none;color:var(--tm);font-size:14px;font-weight:500}.nav-back{color:var(--p);font-weight:700}
+  .container{max-width:900px;margin:0 auto;padding:0 24px}
+  .hero{padding:48px 0 32px}
+  .hero .badge{display:inline-block;background:#eff6ff;color:var(--p);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:3px 12px;border-radius:20px;margin-bottom:12px}
+  .hero h1{font-size:2rem;font-weight:800;letter-spacing:-0.04em;margin-bottom:10px}
+  .hero p{color:var(--tm);font-size:1rem;max-width:700px}
+  section{padding:36px 0}
+  section h2{font-size:1.3rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:6px}
+  .section-sub{color:var(--tm);margin-bottom:20px;font-size:14px}
+  .pmi-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+  .pmi-tag{font-size:11px;font-weight:700;padding:4px 12px;border-radius:6px;border:1px solid var(--b);background:var(--card)}
+  .pmi-tag strong{color:var(--p)}
+
+  /* Steps */
+  .steps{counter-reset:step}
+  .step{background:var(--card);border:1px solid var(--b);border-radius:10px;padding:20px 20px 20px 64px;margin-bottom:12px;position:relative;counter-increment:step}
+  .step::before{content:counter(step);position:absolute;left:20px;top:20px;width:32px;height:32px;background:var(--p);color:#fff;border-radius:50%;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:0.95rem;font-weight:700;margin-bottom:4px}
+  .step p{font-size:13px;color:var(--tm);line-height:1.55}
+  .step .tools{margin-top:8px;font-size:12px;color:var(--p);font-weight:600}
+
+  /* Use cases */
+  .uc{background:var(--card);border:1px solid var(--b);border-left:4px solid var(--p);border-radius:10px;padding:20px;margin-bottom:14px}
+  .uc .uc-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+  .uc .uc-num{background:var(--p);color:#fff;font-size:11px;font-weight:800;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .uc h3{font-size:0.95rem;font-weight:700}
+  .uc .uc-phase{font-size:11px;font-weight:600;color:var(--p);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px}
+  .uc p{font-size:13px;color:var(--tm);line-height:1.55}
+  .uc .ka-tags{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px}
+  .uc .ka-tag{font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;background:#f1f5f9;color:var(--tm)}
+  .prompt-box{margin-top:12px;background:#f8fafc;border:1px solid var(--b);border-radius:6px;padding:12px;font-size:12px;font-family:'SF Mono','Consolas',monospace;color:var(--t);white-space:pre-wrap;line-height:1.5}
+  .prompt-box::before{content:'AI prompt example';display:block;font-family:-apple-system,sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--tm);margin-bottom:6px}
+
+  .tool-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--b);border-radius:10px;overflow:hidden;font-size:13px;margin-top:16px}
+  .tool-table th{background:#f1f5f9;text-align:left;padding:10px 14px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--tm);border-bottom:1px solid var(--b)}
+  .tool-table td{padding:10px 14px;border-bottom:1px solid var(--b);vertical-align:top}
+  .tool-table tr:last-child td{border-bottom:none}
+  .tool-name{font-weight:700}
+  footer{text-align:center;padding:32px 24px;color:var(--tm);font-size:13px;border-top:1px solid var(--b);margin-top:32px}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-back" href="index.html">&larr; Back</a>
+  <a href="index.html">AI + PM</a>
+</nav>
+
+<div class="container">
+
+<div class="hero">
+  <span class="badge">Planning &amp; Scheduling</span>
+  <h1>AI-Assisted Planning &amp; Scheduling</h1>
+  <p>Use AI to auto-generate work breakdown structures, estimate durations, optimize the critical path, and level resources &mdash; cutting planning time by up to 50%.</p>
+</div>
+
+<!-- PMI Alignment -->
+<section>
+  <h2>PMI Alignment</h2>
+  <div class="pmi-tags">
+    <span class="pmi-tag"><strong>Process Groups:</strong> Planning, Executing</span>
+    <span class="pmi-tag"><strong>Knowledge Areas:</strong> Scope, Schedule, Cost, Resource, Integration</span>
+  </div>
+</section>
+
+<!-- 5-Step Guide -->
+<section>
+  <h2>5-Step Implementation Guide</h2>
+  <p class="section-sub">A structured approach to integrating AI into your planning workflow.</p>
+
+  <div class="steps">
+    <div class="step">
+      <h3>Define Scope &amp; Collect Historical Data</h3>
+      <p>Gather project scope documents, past project schedules, and actuals vs. estimates data. AI models perform best when trained on your organization's historical performance. Export Jira/Asana data as CSV or connect via API.</p>
+      <div class="tools">PMI: Scope Management &middot; Tools: Jira, Asana, MS Project</div>
+    </div>
+    <div class="step">
+      <h3>Auto-Generate Work Breakdown Structure</h3>
+      <p>Feed AI the project scope statement and deliverable list. The model decomposes work into a hierarchical WBS (typically 3-4 levels). Review and adjust &mdash; AI gets you 80% there, human judgment finishes.</p>
+      <div class="tools">PMI: Scope &rarr; Create WBS &middot; Tools: Claude, ChatGPT, Notion AI</div>
+    </div>
+    <div class="step">
+      <h3>Estimate Durations &amp; Effort with AI</h3>
+      <p>For each WBS work package, AI estimates effort using analogous estimation (comparing to historical tasks) or parametric estimation (lines of code, complexity scores). Always apply a confidence interval (P50 vs P80).</p>
+      <div class="tools">PMI: Schedule &rarr; Estimate Durations &middot; Tools: Forecast.app, Claude</div>
+    </div>
+    <div class="step">
+      <h3>Build &amp; Optimize the Schedule</h3>
+      <p>Import AI-generated estimates into your scheduling tool. Use AI to run critical-path analysis, identify float, and propose schedule compression (crashing/fast-tracking) scenarios automatically.</p>
+      <div class="tools">PMI: Schedule &rarr; Develop Schedule &middot; Tools: MS Project Copilot, Smartsheet AI</div>
+    </div>
+    <div class="step">
+      <h3>Level Resources &amp; Iterate</h3>
+      <p>AI analyzes team capacity, skill matrices, and availability to suggest optimal task assignments. Run "what-if" scenarios: What if we add one developer? What if Designer A is 50% allocated? Iterate until balanced.</p>
+      <div class="tools">PMI: Resource &rarr; Develop Team &middot; Tools: Monday AI, Forecast.app, Planview</div>
+    </div>
+  </div>
+</section>
+
+<!-- Top 5 Use Cases -->
+<section>
+  <h2>Top 5 Use Cases</h2>
+  <p class="section-sub">Practical scenarios with AI prompt examples and PMI knowledge-area mapping.</p>
+
+  <div class="uc">
+    <div class="uc-head"><span class="uc-num">1</span><h3>Auto-Generate WBS from Scope Statement</h3></div>
+    <div class="uc-phase">Planning &rarr; Scope Management</div>
+    <p>Paste your project scope statement into an AI model and get a multi-level WBS in seconds. Especially valuable for new PMs or unfamiliar domains where you lack templates.</p>
+    <div class="ka-tags"><span class="ka-tag">Scope</span><span class="ka-tag">Integration</span></div>
+    <div class="prompt-box">You are a senior project manager. Given this scope statement:
+"[paste scope]"
+
+Generate a 3-level WBS with:
+- Level 1: Major deliverables
+- Level 2: Work packages
+- Level 3: Activities
+Include estimated effort (hours) per activity.</div>
+  </div>
+
+  <div class="uc">
+    <div class="uc-head"><span class="uc-num">2</span><h3>Three-Point Estimation from Historical Data</h3></div>
+    <div class="uc-phase">Planning &rarr; Schedule Management</div>
+    <p>Provide AI with past project data (task name, estimated vs. actual hours). It generates PERT estimates (Optimistic, Most Likely, Pessimistic) for new tasks, reducing estimation bias.</p>
+    <div class="ka-tags"><span class="ka-tag">Schedule</span><span class="ka-tag">Cost</span></div>
+    <div class="prompt-box">Here is historical data from 3 past projects [paste CSV].
+For these new tasks, provide three-point estimates:
+1. Frontend redesign
+2. API integration with payment gateway
+3. QA regression testing suite
+
+Format: Task | Optimistic | Most Likely | Pessimistic | PERT Expected</div>
+  </div>
+
+  <div class="uc">
+    <div class="uc-head"><span class="uc-num">3</span><h3>Critical Path &amp; Float Analysis</h3></div>
+    <div class="uc-phase">Planning &rarr; Schedule Management</div>
+    <p>Feed AI your task list with dependencies and durations. It identifies the critical path, calculates total and free float, and highlights tasks that need close monitoring.</p>
+    <div class="ka-tags"><span class="ka-tag">Schedule</span><span class="ka-tag">Risk</span></div>
+    <div class="prompt-box">Given these tasks with dependencies and durations:
+[paste task table with columns: ID, Task, Duration, Predecessors]
+
+1. Identify the critical path
+2. Calculate total float for each task
+3. Recommend which 3 tasks to monitor most closely
+4. Suggest one schedule compression option</div>
+  </div>
+
+  <div class="uc">
+    <div class="uc-head"><span class="uc-num">4</span><h3>Resource Leveling &amp; Allocation Optimization</h3></div>
+    <div class="uc-phase">Executing &rarr; Resource Management</div>
+    <p>AI analyzes team members' skills, current allocation, and availability. It recommends optimal assignment to minimize over-allocation and bottlenecks while respecting skill requirements.</p>
+    <div class="ka-tags"><span class="ka-tag">Resource</span><span class="ka-tag">Schedule</span></div>
+    <div class="prompt-box">Team members and availability:
+- Alice: Frontend (80% available, strong React)
+- Bob: Backend (100% available, Go + Python)
+- Carol: QA (50% available, automation expert)
+
+Tasks requiring assignment:
+[paste task list with required skills and effort]
+
+Optimize assignment to avoid over-allocation.
+Flag any capacity gaps.</div>
+  </div>
+
+  <div class="uc">
+    <div class="uc-head"><span class="uc-num">5</span><h3>Sprint Planning &amp; Velocity Forecasting</h3></div>
+    <div class="uc-phase">Executing &rarr; Schedule + Resource Management</div>
+    <p>For Agile PMs &mdash; AI analyzes past sprint velocity data and backlog complexity to predict how many story points the team can deliver next sprint and forecast the release date.</p>
+    <div class="ka-tags"><span class="ka-tag">Schedule</span><span class="ka-tag">Scope</span><span class="ka-tag">Resource</span></div>
+    <div class="prompt-box">Last 6 sprint velocities: 34, 28, 31, 36, 33, 30
+Remaining backlog: 210 story points
+Team changes next sprint: +1 mid-level dev
+
+1. Predict next sprint velocity (with confidence range)
+2. Forecast release date for remaining backlog
+3. Recommend sprint goal sizing</div>
+  </div>
+
+</section>
+
+<!-- Tools -->
+<section>
+  <h2>Recommended Tools</h2>
+  <table class="tool-table">
+    <thead><tr><th>Tool</th><th>Best For</th><th>AI Capability</th><th>Pricing</th></tr></thead>
+    <tbody>
+      <tr><td class="tool-name">Microsoft Project Copilot</td><td>Enterprise scheduling</td><td>Auto-schedule, risk flags, resource suggestions</td><td>M365 license</td></tr>
+      <tr><td class="tool-name">Asana Intelligence</td><td>Team task management</td><td>Smart goals, status updates, field suggestions</td><td>Business+ plan</td></tr>
+      <tr><td class="tool-name">Forecast.app</td><td>Resource &amp; project planning</td><td>AI estimation, capacity planning, budget tracking</td><td>Custom</td></tr>
+      <tr><td class="tool-name">Smartsheet AI</td><td>Spreadsheet-style PM</td><td>Formula generation, summaries, automation</td><td>Business+ plan</td></tr>
+      <tr><td class="tool-name">Claude / ChatGPT</td><td>Ad-hoc planning &amp; analysis</td><td>WBS, estimation, scenario analysis, documentation</td><td>$20/mo+</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</div>
+<footer><a href="index.html" style="color:var(--p);text-decoration:none;font-weight:600">&larr; Back to Home</a> &middot; AI-Powered Project Management Guide</footer>
+</body>
+</html>
